@@ -1,0 +1,42 @@
+<html>
+<head>
+<link href="./css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
+<script src="./js/bootstrap.js"></script>
+<script src="./js/jquery.js"></script>
+<script src="js/home.js"></script>
+</head>
+<nav class="navbar navbar-expand-sm bg-danger navbar-dark">
+ <a class="nav-link" href="#">Book Store</a>
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="#">Purchase</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Logout</a>
+    </li>
+	
+  </ul>
+</nav>
+<body>
+<div class="col-md-4">
+	<h1>Payment</h1>
+	<div class="form-group">
+	  <label for="usr">Author Name:</label>
+	  <input id="authorname" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+	  <label for="usr">Book Name:</label>
+	  <input id="bookname" type="text" class="form-control">
+	</div>
+	
+	<div class="form-group">
+	  <label for="usr">Price:</label>
+	  <input id="price" type="text" class="form-control">
+	</div>
+	
+	</div><button onclick="pay()" type="button" class="btn btn-info">Buy & Download</button>
+	
+</div>
+
+</body>
+</html>
