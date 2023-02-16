@@ -1,0 +1,57 @@
+https://www.ijert.org/covid-19-tracking-of-cases-in-javascript-and-php-with-biometric-scan-report
+
+https://phpgurukul.com/covid19-testing-management-system-using-php-and-mysql/ 
+
+//modules
+
+
+
+
+ABSTRACT
+As the Covid-19 is widespread over the world. With its disturbing storm of influenced cases all through the world, lockdown, and mindfulness among individuals are found to be the as it implied for limiting the community transmission. In a thickly populated nation like India, it is exceptionally troublesome to anticipate the community transmission indeed amid lockdown without social mindfulness and prudent measures taken by the individuals. As of late, a few control zones had been distinguished all through the nation and separated into white, orange, and green zone, separately. In this report, the white zones show the contamination hotspots, orange zones signify a few diseases, and green zones demonstrate a zone with no disease. we'll be explaining Biometric advances for mindfulness and safety measure reason and how they can be utilized to diminish the rate of cases. A biometric framework may be an innovation able of distinguishing an individual from an advanced unique mark from a still source. There are numerous strategies in which biometric work, but in common, they work by comparing chosen highlights from given print with the thumb as well as comparing the unique mark inside a database. Utilizing this application we'll attempt to get to control, recognizable proof framework, and law requirement applications. This innovation is utilized in numerous areas such as biometrics for distinguishing proof, afterward which is clarified in our venture.
+
+INTRODUCTION
+
+Covid-19 is one of the most noteworthy wide-spreading issues all over the world. In this widespread time, the world wellbeing organization partition the covid cases into three zones as ruddy, orange, and green zones. Through this the ruddy zone means the passing cases, the orange zone means recouping cases and the green zone implies the recuperated cases all through all over the nations. Due to the expanding cases day by day the individuals require offer assistance to battle against the corona by solidarity.
+
+In this study, we are building the Covid-19 tracker of all the cases all around the world by JavaScript and PHP by using the Geoplugin API in Web Development & Design. In this following framework, the covid cases are isolated into three control zones as white means total cases, orange means total deaths, and green zones imply recovered cases which are represented as a statistical form.
+
+Recently in India, begin companies, schools, and colleges at their working places, this working situations, require several required things as a sanitizer, a suitable N-95 mask, and the covid report. So, with the assistance of PHP, the dataset collects from the Shree Ji Govt. General Hospital which has a covid report of 200 patients appears the corona test details like title, lab-id, srf no., age, date, result, address, etc. which shown through the biometric scan.
+
+
+EXISTING SYSTEM
+
+This system widely there is not records has been maintained after the lock down period. Also the goverment has only the number of count to understand their daily records. it cause an issue when next round of spread will happen. this existing does not have any proper record to track the patient details. they just have and noted infected peoples contact details in hospital diary.
+
+
+
+PROPOSED SYSTEM
+
+As the virus that causes COVID-19 continues to spread from person to persons in communities and rampaging the world, the need for an effective real-time surveillance system becomes paramount. Advance contact tracing and detection of the persons with the virus represents one of the main strategies to prevent transmission. Although COVID-19 surveillance systems such as contact tracing mobile apps have improved the administration and management of virus, there are still challenges such as privacy, cost and ethical issues, the adoption of new technologies, standardized cases, and validly diagnosed case and validity. However, the current mobile apps contact tracing system adopted by different nations has complemented conventional tracing effort in fighting the virus. This proposal is a model for an interactive computer system using mobile phones and the internet for real-time collection and transmission of events related to COVID-19. It will aid the administration and presumptive management of COVID-19 in the world, especially in rural areas. This proposal shows that a sophisticated COVID-19 surveillance system can be build using mobile phones with the right telecommunication technology partner.
+
+
+Admin Module
+
+Admin is the superuser of the website who can manage everything on the website. Admin can log in through the login page
+
+Dashboard: In this section, the admin can see all detail in brief like the total, assigned and the sample collected and completed tests.
+
+Phlebotomist: In this section, the admin can manage Phlebotomist (add, update, delete).
+
+Testing: In this section, the admin can manage all the tests like assign the test to Phlebotomist and update the history.
+
+Report: In this section, the admin can generate two types of report. One is between dates reports and another one is by search. Admin can search the report by order number, name and mobile number.
+
+Notification: In this section, the admin will get a notification for every new test request (notification bell).
+Admin can also update his profile, change the password and recover the password.
+
+User(Patient) Module
+
+User can visit the application through a URL.
+
+Testing: This section divided into two parts. One is for new user and another one is for registered user. New user(First-time user) needs to provide personal and testing Information. A registered user only needs to provide test information, their personal information will be fetched from the database.
+
+Report: In this section, Users can search their test report using order number, name and registered mobile number.
+
+Dashboard: In this section, the User can see the in which State of how many tests are done.
+

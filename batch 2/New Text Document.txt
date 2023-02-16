@@ -1,0 +1,20 @@
+1.  	visitors management system
+https://code-projects.org/visitor-management-system-in-php-with-source-code/
+to Run : http://localhost/vms/
+database : vms
+
+2.	fuel automation system
+
+3.	covid 19 tracking system
+https://phpgurukul.com/covid19-testing-management-system-using-php-and-mysql/#google_vignette
+to Run : http://localhost/2023/covid/covid-tms/
+database : covid
+
+4.	customer relationship management system
+
+5. 	college finder
+
+
+
+https://iproductkeys.com/microsoft-office-2016-product-key/
+NBCRJ-YJ94Q-T73WV-9PR4F-9W3VC

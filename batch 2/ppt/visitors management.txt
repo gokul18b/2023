@@ -1,0 +1,71 @@
+https://core.ac.uk/download/pdf/211030682.pdf
+link has concluion & modules
+
+https://www.studocu.com/row/document/savitribai-phule-pune-university/computer-engineering/visitors-management-system-report/38518135
+full document
+downloaded visitors-management-system
+
+
+
+
+
+ABSTRACT
+
+Visitor Management System deals with the security provided atcompany premises from the unauthenticated or unwanted visitors.Nowadays, in most organizations Visitor management consists of visitors?scribbling their name in a paper book.Instead, Company Visitor Management System will assist you the professionalizedway in which you welcome your visitors. This software is a complete VisitorManagement service to improve the efficiency, productivity, security
+
+
+INTRODUCTION
+
+Visitor Management system is a web-based technology that willrevolutionize the way your company manages visitors. Visitor Managementsystem is more important to security guards or security company. This webapplication provides a way to effectively control record & track company visitortraffic.In CVMS we use PHP and MySQL database. This is the project which keeps recordsof visitors who visited in the company.CVMS has one module i.e. admin1.Dashboard: In this sections, admin can briefly view how many visitorsvisited in a particular period.2.Visitors: In this section, admin adds new visitors by filling their informationin add visitors sections and also view and manage visitor’s records. Adminalso put visitors out time in the manage records section.3.Search: In this bar, admin can search a particular person by their name andphone number.4.Reports: In this section admin can generate visitor’s reports between twodates.Admin can also update his profile, change password and recover password
+
+
+
+PROPOSED SYSTEM
+
+The desktop application system is to be computerised in order to
+overcome the problems, which affects the existing desktop
+application system.
+Computerising the existing system with the help of some programming
+language, database package ease the work of the system up to a great
+extent.
+Generally, there has been a criterion to work on any job or task for a
+specific purpose. Nobody works without specific detailed information
+about the particular task he is performing. Thus, any transaction can be
+performed either or check in and check out. In the computerised system,
+the first screen of the system would be a welcome message and a list of
+menus.
+
+
+To provide quick and efficient means for gathering the visitor
+information
+? To automate the work such as gathering visitor information
+andallocating the zones they are allowed to visit. 
+
+
+
+EXISTING SYSTEM
+
+Existing system is based on desktop application work and all the
+process are done through desktop application, so they maintain several
+database registers for recording all the details of the system. They
+maintain several registers for recording the entry of daily transactions
+such as visitors visited, visitor pass, etc.
+They maintain the record of the visitors so they keep entire information
+regarding the visitor in the visitor master file. In the similar fashion they
+maintain the records of their visits so they keep entire information
+regarding their visits in the visit master file. They keep the visitor book
+to maintain the record for the visits.
+They maintain the register or book for visitor information, visitor list,
+check in and checkout information and all the things are done with the
+help of desktop application.
+
+Difficulty in maintaining records
+• Time consuming
+• Editing of data becomes a tedious job
+• No security of data
+• Lack of efficiency and man power
+• High data redundancy
+• Data inconsistency 
+
+
+

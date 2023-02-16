@@ -1,0 +1,31 @@
+http://ignousupport.blogspot.com/p/complaint-registration-management.html
+
+
+ABSTRACT
+
+Customer relationship management (CRM) is a combination of people, processes and technology that seeks to understand a company's customers. It is an integrated approach to managing relationships by focusing on customer retention and relationship development. CRM has evolved from advances in information technology and organizational changes in customer?centric processes. Companies that successfully implement CRM will reap the rewards in customer loyalty and long run profitability. However, successful implementation is elusive to many companies, mostly because they do not understand that CRM requires company?wide, cross?functional, customer?focused business process re?engineering. Although a large portion of CRM is technology, viewing CRM as a technology?only solution is likely to fail. Managing a successful CRM implementation requires an integrated and balanced approach to technology, process, and people.
+
+
+INTRODUCTION
+
+CRM is a strategy and technology that is used to build stronger relationships between organizations and their clients. An organization will store information that is related to their clients, and employees will analyze it to use it in forecasting and making reports. Some of the strategies of CRM software are planning for targeted marketing campaigns towards specific clients. The strategies used will be relying on the information that is coming from the CRM system. CRM software solution is commonly used by all kind of corporations that focusing on maintaining a strong relationship with their customers.
+
+There are many reasons why CRM software has become the most important software in the last 10 years. The competition has become highly competitive in the global market, and it has become easier for clients to switch companies if they are not happy with the service they receive or want the product with the low price. One of the primary goals of CRM solution is to retain clients and protect them from competitor’s temptations. When CRM is used effectively, an organization will be able to build a relationship with their clients that can last a lifetime. It is so important to realize that CRM system solution is more than just software.
+
+This CRM introduction aims to explaining what the CRM is in a nutshell and making it easier to realize the tremendous benefits of purchasing a Customer Relationship Management software that will help drive more customers thus more profit towards you and makes your life easier.
+
+Today growing businesses manage customer connections and information in a variety of ways. Some use old fashioned note cards and Rolodex. Others store information on their mobile phone while on the go or while having no means of accessing a Personal Computer or a laptop. Others use Excel spreadsheets or Google documents and that is the most common case. While that may help in the short term when you have a small team and don’t plan on scaling up your business, if you want to scale up for fast growth, it may be time to consider a CRM system to help you collect your precious business data in one place, make it accessible via the cloud, and free up your time to focus on delighting customers rather than letting valuable insights and information fall through the cracks while you are on the go. A Cloud CRM System would be perfect for satisfying all of your business needs while being able to access the important data you need from anywhere with an internet connection available.
+
+
+
+EXISTING SYSTEM
+
+There are not any existing system for clide side. SO all the work are handle manually and have to be noted down in some register and also taking care of that documentation. They are arranged meeting by call and if any update occured then again call the client and update meeting schedule, its wasting time and as well as money also and also the disturb the valuable clients.
+
+https://www.slideshare.net/sach66/customer-relationship-management-module-project-report
+
+
+PROPOSED SYSTEM
+
+The focus of customer relation ship management is on creating value for the customer and the company over the longer term. when the customers value the customer service that they receive from suppliers, they are less likely to look to alternative suppliers for their needs and CRM enables organization to gain competitive advantage over competitors that supply similar products or services.
+
