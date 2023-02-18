@@ -42,20 +42,7 @@ public class ApiController {
 		return "Customer Saved Sucessfully";
 	}
 	
-	@GetMapping("/add_car/{bname}/{carname}/{model}/{engine}/{width}/{height}/{price}/{year}")
-	public String add_student(@PathVariable String bname,
-			@PathVariable String carname,
-			@PathVariable String  model,
-			@PathVariable String front,
-			@PathVariable String back,
-			@PathVariable String ps,
-			@PathVariable String ds,
-			@PathVariable String designation,
-			@PathVariable String username,
-			@PathVariable String password) {
-		dao.add_student(name,qualification,mobile,front,back,ps,ds,designation,username,password);
-		return "Student Saved Sucessfully";
-	}
+	
 	
 	@GetMapping("/add_requirement/{title}/{desc}/{fe}/{be}/{modules}")
 	public String add_requirement(@PathVariable String title,@PathVariable String desc,

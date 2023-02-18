@@ -30,6 +30,11 @@
                         <input class="form-control" id="3">
                     </div>
                     <div class="form-group">
+                        <label>Select Bank</label>
+                        <select class="form-control" id="selectBank"></select>
+                    </div>
+                    
+                    <div class="form-group">
                         <label>Aadhar</label>
                         <input class="form-control" id="4">
                     </div>
@@ -86,6 +91,23 @@
             $(this.rel).fadeIn(500).addClass("tab_content_active");
         });
 
+        getBanks();
+        function getBanks() {
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/api/get_bank"
+            }).done(function (data) {
+
+                var html = ''
+                for (i = 0; i < data.length; i++) {
+                    html += `<option value=` + data[i].id + `>` + data[i].bankname + `-` + data[i].branch + `</option>`;
+                }
+                $("#selectBank").html(html);
+
+            });
+        }
+
+
         $("#create_account").on('click', function () {
             var one = $("#1").val();
             var two = $("#2").val();
@@ -99,9 +121,10 @@
             var ten = $("#10").val();
             var lev1 = $("#11").val();
             var lev2 = $("#12").val();
+            var select = $("#selectBank").val();
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8080/api/add_customer/" + encodeURIComponent(one) + "/" + two + "/" + three + "/" + four + "/" + five + "/" + six + "/" + seven + "/" + eight + "/" + nine + "/" + ten + "/" + lev1 + "/" + lev2
+                url: "http://localhost:8080/api/add_customer/" + encodeURIComponent(one) + "/" + two + "/" + three + "/" + four + "/" + five + "/" + six + "/" + seven + "/" + eight + "/" + nine + "/" + ten + "/" + lev1 + "/" + lev2+"/"+select
             }).done(function (data) {
                 $("#1").val("");
                 $("#2").val("");

@@ -80,6 +80,12 @@ public class ApiController {
 		
 	}
 	
+	@GetMapping("/get_houses/{userId}")
+	public List<Object[]> get_houses(@PathVariable Integer userId) {
+		return dao.get_houses(userId);
+		
+	}
+	
 	@GetMapping("/get_bookings")
 	public List<Object[]> get_bookings() {
 		return dao.get_bookings();

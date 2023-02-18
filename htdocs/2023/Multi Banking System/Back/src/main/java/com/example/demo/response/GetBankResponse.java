@@ -6,7 +6,15 @@ public class GetBankResponse {
 	String address;
 	String ifsccode;
 	String landline;
+	String branch;
 	
+	
+	public String getBranch() {
+		return branch;
+	}
+	public void setBranch(String branch) {
+		this.branch = branch;
+	}
 	public Integer getId() {
 		return id;
 	}

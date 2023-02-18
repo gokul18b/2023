@@ -19,45 +19,34 @@
                 <div class="tab-content">
                     <table class="table table-bordered">
                         <thead>
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
-                            <th scope="col">Mobile</th>
-                            <th scope="col">Aadhar</th>
-                            <th scope="col">Bank Name</th>
-                            <th scope="col">IFSC Code</th>
-                            <th scope="col">pincode</th>
-                            <th scope="col">Approve</th>
-                          </tr>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Mobile</th>
+                                <th scope="col">Aadhar</th>
+
+                                <th scope="col">pincode</th>
+                                <th scope="col">Approve</th>
+                            </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>xxxxx</td>
-                            <td>xxxxx</td>
-                            <td>xxxxx</td>
-                            <td>xxxxx</td>
-                            <td>xxxxx</td>
-                            <td>xxxxx</td>
-                            <td>xxxxx</td>
-                            <td><button type="submit" class="btn btn-primary">Approve</button></td>
-                          </tr>
-                         
+                        <tbody id="bodys">
+
+
                         </tbody>
-                      </table>
+                    </table>
                 </div>
             </div>
             <div class="tab">
                 <input type="radio" name="css-tabs" id="tab-2" class="tab-switch">
                 <label for="tab-2" class="tab-label">Logout</label>
                 <div class="tab-content">
-                    
+
                 </div>
             </div>
-           
+
         </div>
-        <p>Example line outside of tab box</p>
+
     </div>
 </body>
 <script>
@@ -74,7 +63,59 @@
 
         });
 
+        $("#tab-2").click(function () {
+
+           window.location.href= "index.html"
+
+        });
+
+        
+        getCustomers();
+
+
     });
+
+    function approve(id) {
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/approve/" + id
+        }).done(function (data) {
+            getCustomers();
+            alert(data)
+
+        });
+    }
+    function getCustomers() {
+        const params = new URLSearchParams(window.location.search);
+        const paramValue = params.get("bankId");
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/get_customer/" + paramValue
+        }).done(function (data) {
+
+            var html = '';
+            for (i = 0; i < data.length; i++) {
+                html += `<tr>
+                        <th scope="row">`+ (i + 1) + `</th>
+                        <td>`+ data[i][2] + `</td>
+                        <td>`+ data[i][3] + `</td>
+                        <td>`+ data[i][4] + `</td>
+                        <td>`+ data[i][5] + `</td>
+                       
+                        <td>`+ data[i][13] + `</td>
+                        <td><button onClick="approve(`+ data[i][0] + `)"  class="btn btn-primary">Approve</button></td>
+
+                    </tr>`;
+            }
+            $("#bodys").html(html);
+
+
+        });
+
+
+
+    }
 
 </script>
 

@@ -22,34 +22,32 @@ public class ApiDao {
 	public String login(String username, String password) {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
-		String sql = "select * from admin where username='"+username+"' and password='"+password+"'";;
+		String sql = "select * from admin where username='" + username + "' and password='" + password + "'";
+		;
 		NativeQuery nq = session.createNativeQuery(sql);
 		if (nq.list().size() != 0) {
 			return "admin";
 		} else {
-			String sql1 = "select * from student where username='"+username+"' and password='"+password+"'";;
+			String sql1 = "select * from student where username='" + username + "' and password='" + password + "'";
+			;
 			NativeQuery nq1 = session.createNativeQuery(sql1);
 			if (nq1.list().size() != 0) {
 				List<Object[]> a = nq1.list();
-				return "id="+a.get(0)[0];
-			}else {
+				return "id=" + a.get(0)[0];
+			} else {
 				return "Invalid";
 			}
-			
+
 		}
 	}
-
 
 	public void add_customer(String name, String mobile, String email, String username, String password) {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
-		String sql = "INSERT INTO `user` (`id`, `name`, `mobile`, `email`, `username`, `password`) VALUES"
-				+ " (NULL, '"+name+"', '"+mobile+"', '"+email+"', '"+username+"', '"+password+"');";
+		String sql = "INSERT INTO `user` (`id`, `name`, `mobile`, `email`, `username`, `password`) VALUES" + " (NULL, '"
+				+ name + "', '" + mobile + "', '" + email + "', '" + username + "', '" + password + "');";
 		session.createSQLQuery(sql).executeUpdate();
 	}
-
-
-
 
 	public void add_house(String name, String owner, String contact, String address1, String address2, String city,
 			String district, String state, String landmark, String pincode, String squre, String bedroom, String hall,
@@ -57,24 +55,20 @@ public class ApiDao {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
 		String sql = "INSERT INTO `house` (`id`, `name`, `owner`, `contact`, `address1`, `address2`, `city`, `district`, `state`, `landmark`, `pincode`, `squre`, `bedroom`, `hall`, `kitchen`, `others`, `price`) VALUES "
-				+ "(NULL, '"+name+"', '"+owner+"', '"+contact+"', '"+address1+"', '"+address2+"', '"+city+"', "
-						+ "'"+district+"', '"+state+"', '"+landmark+"', '"+pincode+"', '"+squre+"', '"+bedroom+"', '"+hall+"', "
-								+ "'"+kitchen+"', '"+others+"', '"+price+"');";
-		session.createSQLQuery(sql).executeUpdate();
-		}
-
-
-
-
-	public void add_book(Integer customer_id, Integer houseid) {
-		// TODO Auto-generated method stub
-		
-		Session session = sf.getCurrentSession();
-		String sql = "INSERT INTO `booking` (`id`, `userid`, `houseid`) VALUES "
-				+ "(NULL, "+customer_id+", "+houseid+");";
+				+ "(NULL, '" + name + "', '" + owner + "', '" + contact + "', '" + address1 + "', '" + address2 + "', '"
+				+ city + "', " + "'" + district + "', '" + state + "', '" + landmark + "', '" + pincode + "', '" + squre
+				+ "', '" + bedroom + "', '" + hall + "', " + "'" + kitchen + "', '" + others + "', '" + price + "');";
 		session.createSQLQuery(sql).executeUpdate();
 	}
 
+	public void add_book(Integer customer_id, Integer houseid) {
+		// TODO Auto-generated method stub
+
+		Session session = sf.getCurrentSession();
+		String sql = "INSERT INTO `booking` (`id`, `userid`, `houseid`) VALUES " + "(NULL, " + customer_id + ", "
+				+ houseid + ");";
+		session.createSQLQuery(sql).executeUpdate();
+	}
 
 	public List<Object[]> get_houses() {
 		// TODO Auto-generated method stub
@@ -83,18 +77,21 @@ public class ApiDao {
 		NativeQuery nq = session.createNativeQuery(sql);
 		return nq.list();
 	}
-
-
-	public List<Object[]> get_bookings() {
+	
+	public List<Object[]> get_houses(Integer userId) {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
-		String sql = "SELECT user.name,user.mobile,house.name as housename,house.owner,house.contact FROM `booking` LEFT JOIN house on(house.id=booking.houseid) LEFT JOIN user on(user.id=booking.userid)";
+		String sql = "SELECT  house.id,house.name,house.owner,house.contact,house.address1,house.address2,house.city,house.district,house.state,house.landmark,house.pincode,house.squre,house.bedroom,house.hall,house.kitchen,house.others,house.price from house LEFT JOIN booking ON (booking.houseid=house.id AND booking.userid!="+userId+")";
 		NativeQuery nq = session.createNativeQuery(sql);
 		return nq.list();
 	}
 
-
-	
+	public List<Object[]> get_bookings() {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "SELECT user.name, user.mobile,house.name as housename,house.owner,house.contact FROM `booking` LEFT JOIN house on(house.id=booking.houseid) LEFT JOIN user on(user.id=booking.userid)";
+		NativeQuery nq = session.createNativeQuery(sql);
+		return nq.list();
 	}
 
-
+}

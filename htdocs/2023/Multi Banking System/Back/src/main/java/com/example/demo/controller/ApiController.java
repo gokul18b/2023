@@ -39,12 +39,13 @@ public class ApiController {
 	
 	
 	
-	@PostMapping("/add_bank/{bankname}/{address}/{ifsccode}/{landline}")
+	@PostMapping("/add_bank/{bankname}/{branch}/{address}/{ifsccode}/{landline}")
 	public String bank_register(@PathVariable String bankname,
+			@PathVariable String branch,
 			@PathVariable String address,
 			@PathVariable String  ifsccode,
 			@PathVariable String landline) {
-		dao.bank_register(bankname,address,ifsccode,landline);
+		dao.bank_register(bankname,branch,address,ifsccode,landline);
 		return "Bank Saved Sucessfully";
 	}
 	
@@ -63,7 +64,7 @@ public class ApiController {
 		return ResponseEntity.ok().body(service.get_bank());
 	}
 	
-	@PostMapping("/add_customer/{fname}/{lname}/{mobile}/{aadhar}/{idproof}/{age}/{gender}/{address1}/{address2}/{city}/{state}/{pincode}")
+	@PostMapping("/add_customer/{fname}/{lname}/{mobile}/{aadhar}/{idproof}/{age}/{gender}/{address1}/{address2}/{city}/{state}/{pincode}/{bankId}")
 	public String add_customer(@PathVariable String  fname,
 			@PathVariable String lname,
 			@PathVariable String  mobile,
@@ -75,8 +76,9 @@ public class ApiController {
 			@PathVariable String address2,
 			@PathVariable String city,
 			@PathVariable String  state,
-			@PathVariable String pincode) {
-		dao.add_customer(fname,lname,mobile,aadhar,idproof,age,gender,address1,address2,city,state,pincode);
+			@PathVariable String pincode,
+			@PathVariable Integer bankId) {
+		dao.add_customer(fname,lname,mobile,aadhar,idproof,age,gender,address1,address2,city,state,pincode,bankId);
 		return "Customer Added Sucessfully";
 	}
 	
@@ -93,6 +95,18 @@ public class ApiController {
 	public ResponseEntity<List<GetCustomerBank>> get_customer_bank(@PathVariable Integer customer_id) {
 		return ResponseEntity.ok().body(service.get_customer_bank(customer_id));
 	}
+	
+	@GetMapping("/get_customer/{bank_id}")
+	public List<Object[]>  get_customer(@PathVariable Integer bank_id) {
+		return dao.get_customer(bank_id);
+	}
+	
+	@GetMapping("/approve/{id}")
+	public String  approve(@PathVariable Integer id) {
+		 dao.approve(id);
+		 return "Sucessfully Approved";
+	}
+	
 	
 	
 }

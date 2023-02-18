@@ -7,18 +7,19 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.NativeQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
+import javax.transaction.Transactional;
 @Repository
+@Transactional
 public class ApiDao {
 	@Autowired
 	SessionFactory sf;
 
 	
-	public void bank_register(String bankname,String address,String ifsccode,String landline) {
+	public void bank_register(String bankname,String branch,String address,String ifsccode,String landline) {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
-		String sql = "INSERT INTO `bank` (`id`, `bankname`, `address`, `ifsccode`, `landline`)"
-				+ " VALUES (NULL, '"+bankname+"', '"+address+"', '"+ifsccode+"', '"+landline+"');";
+		String sql = "INSERT INTO `bank` (`id`, `bankname`, `branch`, `address`, `ifsccode`, `landline`)"
+				+ " VALUES (NULL, '"+bankname+"','"+branch+"', '"+address+"', '"+ifsccode+"', '"+landline+"');";
 		session.createSQLQuery(sql).executeUpdate();
 	}
 	
@@ -65,12 +66,12 @@ public class ApiDao {
 	}
 
 	public void add_customer(String fname, String lname, String mobile, String aadhar, String idproof, String age,
-			String gender, String address1, String address2, String city, String state, String pincode) {
+			String gender, String address1, String address2, String city, String state, String pincode, Integer bankId) {
 		// TODO Auto-generated method stub
 		
 		Session session = sf.getCurrentSession();
-		String sql = "INSERT INTO `customer` (`id`, `fname`, `lname`, `mobile`, `aadhar`, `idproof`, `age`, `gender`, `address1`, `address2`, `city`, `state`, `pincode`) "
-				+ "VALUES (NULL, '"+fname+"', '"+lname+"', '"+mobile+"', '"+aadhar+"', '"+idproof+"', '"+age+"', "
+		String sql = "INSERT INTO `customer` (`id`,`bankId`, `fname`, `lname`, `mobile`, `aadhar`, `idproof`, `age`, `gender`, `address1`, `address2`, `city`, `state`, `pincode`) "
+				+ "VALUES (NULL, '"+bankId+"','"+fname+"', '"+lname+"', '"+mobile+"', '"+aadhar+"', '"+idproof+"', '"+age+"', "
 						+ "'"+gender+"', '"+address1+"', '"+address2+"', '"+city+"', '"+state+"', '"+pincode+"');";
 		session.createSQLQuery(sql).executeUpdate();
 	}
@@ -89,6 +90,22 @@ public class ApiDao {
 		String sql = "Select * from account where id=";
 		NativeQuery nq = session.createNativeQuery(sql);
 		return nq.list();
+	}
+
+	public List<Object[]> get_customer(Integer bank_id) {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "Select * from customer where status!='Approved' AND bankId="+bank_id;
+		NativeQuery nq = session.createNativeQuery(sql);
+		return nq.list();
+		
+	}
+
+	public void approve(Integer id) {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "UPDATE `customer` SET `status` = 'Approved' WHERE `customer`.`id` = "+id;
+		session.createSQLQuery(sql).executeUpdate();
 	}
 
 }

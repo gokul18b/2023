@@ -38,6 +38,7 @@ public class ApiService {
 			obj.setAddress((String)row[2]);
 			obj.setIfsccode((String)row[3]);
 			obj.setLandline((String)row[4]);
+			obj.setBranch((String)row[5]);
 			
 			response.add(obj);			
 		}
@@ -68,6 +69,8 @@ public class ApiService {
 				}
 				return response;
 	}
+
+	
 
 	
 	
