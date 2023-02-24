@@ -30,9 +30,9 @@
                 <input id="four" name="tabs" type="radio">
                 <label for="four"><i class="fa fa-envelope"></i> Billing Details</label>
                 <input id="five" name="tabs" type="radio">
-                <label for="five"><i class="fa fa-envelope"></i>Update Location</label>
+                <a href="update-location.html" for="five"><i class="fa fa-envelope"></i>Update Location</a>
                 <input id="six" name="tabs" type="radio">
-                <label for="six"><i class="fa fa-envelope"></i> Logout</label>
+                <a href="index.html" for="six"><i class="fa fa-envelope"></i> Logout</a>
                 <div class="panels">
                     <div class="panel">
 
@@ -48,8 +48,7 @@
                                 <input id="4" type="text" tabindex="1" required>
                                 <label>Pincode</label>
                                 <input id="5" type="text" tabindex="1" required>
-                                <button name="submit" type="submit" id="contact-submit"
-                                    data-submit="...Sending">Register</button>
+                                <button name="button" type="button" id="btn1" data-submit="...Sending">Register</button>
                             </form>
                         </div>
 
@@ -64,17 +63,20 @@
                                 <input id="12" type="text" tabindex="1" required>
                                 <label>Vehicle Model</label>
                                 <input id="13" type="text" tabindex="1" required>
-                                <button name="submit" type="submit" id="contact-submit"
-                                    data-submit="...Sending">Register</button>
+                                <button name="submit" type="button" id="btn2" data-submit="...Sending">Register</button>
                             </form>
                         </div>
                     </div>
                     <div class="panel">
                         <div class="unit-2">
                             <form id="cc-contact" action="" method="post">
+                                <label>Select Ship</label>
+                                <select id="20" class="form-control" id="sel1">
+
+                                </select>
                                 <label>Select Customer</label>
-                                <select id="21" class="form-control" id="sel1" >
-                                    
+                                <select id="21" class="form-control" id="sel1">
+
                                 </select>
                                 <label>Address</label>
                                 <input id="22" type="text" tabindex="1" required>
@@ -98,42 +100,14 @@
                                 <input id="31" type="text" tabindex="1" required>
                                 <label>Amount</label>
                                 <input id="32" type="text" tabindex="1" required>
-                                <button name="submit" type="submit" id="contact-submit"
-                                    data-submit="...Sending">Register</button>
+                                <button name="submit" type="button" id="btn3" data-submit="...Sending">Register</button>
                             </form>
                         </div>
                     </div>
                     <div class="panel">
                         <div class="-2">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Order Number</th>
-                                        <th scope="col">Customer Name</th>
-                                        <th scope="col">Mobile</th>
-                                        <th scope="col">From</th>
-                                        <th scope="col">To</th>
-                                        <th scope="col">Weight</th>
-                                        <th scope="col">Delivery Date</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>xxxxx</td>
-                                        <td>xxxxx</td>
-                                        <td>xxxxx</td>
-                                        <td>xxxxx</td>
-                                        <td>xxxxx</td>
-                                        <td>xxxxx</td>
-                                        <td>xxxxx</td>
-
-                                    </tr>
-
-                                </tbody>
-                            </table>
+                            <label>Address</label>
+                            <input id="22" type="text" tabindex="1" required>
                         </div>
 
                     </div>
@@ -146,21 +120,16 @@
                                         <th scope="col">Order Number</th>
                                         <th scope="col">Customer Name</th>
                                         <th scope="col">Mobile</th>
-
+                                        <th scope="col">From Location</th>
+                                        <th scope="col">Drop Location</th>
+                                        <th scope="col">Weight</th>
+                                        <th scope="col">Delivery Date</th>
                                         <th scope="col">Amount</th>
+                                        <th scope="col">Current Location</th>
 
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>xxxxx</td>
-                                        <td>xxxxx</td>
-                                        <td>xxxxx</td>
-                                        <td>xxxxx</td>
-
-
-                                    </tr>
+                                <tbody id="body4">
 
                                 </tbody>
                             </table>
@@ -174,6 +143,157 @@
 
 </body>
 <script>
+    $(document).ready(function () {
+        load();
+    })
+
+    function load() {
+        getCustomer();
+        getShip();
+        getBilling();
+    }
+
+    function getBilling() {
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/get_orders"
+        }).done(function (data) {
+
+            var html = ``;
+            var i=0;
+            for (var row in data) {
+i++;
+                html += `<tr>
+                                        <th scope="row">`+(i)+`</th>
+                                        <td>`+data[row][0]+`</td>
+                                        <td>`+data[row][1]+`</td>
+                                        <td>`+data[row][2]+`</td>
+                                        <td>`+data[row][3]+`</td>
+                                        <td>`+data[row][4]+`</td>
+                                        <td>`+data[row][5]+`</td>
+                                        <td>`+data[row][6]+`</td>
+                                        <td>`+data[row][7]+`</td>
+                                        <td>`+data[row][8]+`</td>
+
+
+                                    </tr>`;
+            }
+            $("#body4").html(html);
+        });
+    }
+
+    function getCustomer() {
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/get_customers"
+        }).done(function (data) {
+
+            var html = ``;
+            for (var row in data) {
+
+                html += `<option id=` + data[row][0] + `>` + data[row][1] + `</option>`;
+            }
+            $("#21").html(html);
+        });
+    }
+
+    function getShip() {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/get_ships"
+        }).done(function (data) {
+
+            var html = ``;
+            for (var row in data) {
+
+                html += `<option id=` + data[row][0] + `>` + data[row][1] + `</option>`;
+            }
+            $("#20").html(html);
+            //var product_id = $("#purchase_product").find('option:selected').attr('id');
+        });
+    }
+    $("#btn1").on('click', function () {
+
+        var one = $("#1").val();
+        var two = $("#2").val();
+        var three = $("#3").val();
+        var four = $("#4").val();
+        var five = $("#5").val();
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/add_customer/" + encodeURIComponent(one) + "/" + two + "/" + three + "/" + four + "/" + five
+        }).done(function (data) {
+            console.log(data)
+
+            $("#1").val("");
+            $("#2").val("");
+            $("#3").val("");
+            $("#4").val("");
+            $("#5").val("");
+            load();
+            alert(data)
+        });
+    });
+
+    $("#btn2").on('click', function () {
+
+        var one = $("#11").val();
+        var two = $("#12").val();
+        var three = $("#13").val();
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/add_ship/" + encodeURIComponent(one) + "/" + two + "/" + three
+        }).done(function (data) {
+            console.log(data)
+
+            $("#11").val("");
+            $("#12").val("");
+            $("#13").val("");
+
+            load();
+            alert(data)
+        });
+    });
+
+    $("#btn3").on('click', function () {
+        var zero = $("#20").find('option:selected').attr('id');
+        var one = $("#21").find('option:selected').attr('id');
+        var two = $("#22").val();
+        var three = $("#23").val();
+        var four = $("#24").val();
+        var five = $("#25").val();
+        var six = $("#26").val();
+        var seven = $("#27").val();
+        var eight = $("#28").val();
+        var nine = $("#29").val();
+        var ten = $("#30").val();
+        var lev1 = $("#31").val();
+        var lev2 = $("#32").val();
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/add_order/" + zero + "/" + encodeURIComponent(one) + "/" + two + "/" + three + "/" + four + "/" + five + "/" + six + "/" + seven + "/" + eight + "/" + nine + "/" + ten + "/" + lev1 + "/" + lev2
+        }).done(function (data) {
+            $("#21").val("");
+            $("#22").val("");
+            $("#23").val("");
+            $("#24").val("");
+            $("#25").val("");
+            $("#26").val("");
+            $("#27").val("");
+            $("#28").val("");
+            $("#29").val("");
+            $("#30").val("");
+            $("#31").val("");
+            $("#32").val("");
+            alert(data);
+            load();
+        });
+    });
 
 </script>
 

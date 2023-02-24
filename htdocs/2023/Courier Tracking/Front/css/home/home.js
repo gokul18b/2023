@@ -93,6 +93,9 @@ function addCourier() {
     var name = $("#name3").val();
     var mobile = $("#mobile3").val();
     var address = $("#address3").val();
+    
+    var fromlocation = $("#from3").val();
+	
     var sendlocation = $("#send3").val();
 	var amount = $("#amount3").val();
 	var weight = $("#weight").val();
@@ -102,10 +105,11 @@ function addCourier() {
 
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:8080/api/addCourier/'+name+'/'+mobile+'/'+sendlocation+'/'+address+'/'+amount+'/'+weight+'/'+discount,
+        url: 'http://localhost:8080/api/addCourier/'+name+'/'+mobile+'/'+fromlocation+'/'+sendlocation+'/'+address+'/'+amount+'/'+weight+'/'+discount,
         data: {
             name: name,
             mobile: mobile,
+            fromlocation:fromlocation,
             sendlocation: sendlocation,
             fulladdress:address
         }
@@ -114,6 +118,7 @@ function addCourier() {
         $("#name3").val("");
         $("#mobile3").val("");
         $("#address3").val("");
+        $("#from3").val("");
         $("#send3").val("");
         $("#weight").val("");
         $("#discount").val("");
@@ -129,7 +134,7 @@ function viewCourier() {
         url: 'http://localhost:8080/api/viewCourier',
 
     }).done(function (datas) {
-
+        
         var html = ``;
         for (var i in datas) {
             var data = datas[i];
@@ -139,6 +144,7 @@ function viewCourier() {
                             <td>`+data.name+`</td>
                             <td>`+data.mobile+`</td>
                             <td>`+data.address+`</td>
+                            <td>`+data.fromlocation+`</td>
                             <td>`+data.sendlocation+`</td>
                             <td>`+data.currentlocation+`</td>
                         </tr>`;

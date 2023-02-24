@@ -1,16 +1,18 @@
 $(document).ready(function () {
     $("#login").on('click', function () {
         var username = $("#username").val();
-        var password = $("#username").val();
+        var password = $("#password").val();
         $.ajax({
             type: "GET",
-            url: "/api/admin_login/" + username + "/" + password
+            url: "http://localhost:8080/api/login/" + username + "/" + password
         }).done(function (data) {
-            console.log(data);
-            if (data.length == 0) {
+           
+            if (data== 'invalid') {
                 alert('Invalid username please enter valid username and password')
-            } else {
-                window.location = "/home";
+            } else if(data=='admin'){
+                window.location.href = "admin-home.html";
+            }else{
+                window.location.href = "customer-home.html?"+data
             }
         });
     })

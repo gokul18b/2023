@@ -18,7 +18,7 @@ if ( ! isset( $_POST['mail_id'] ) || $_POST['mail_id'] === "" || $_POST['passwor
 	$password = md5( $password . $salt );
 	//echo $password;
 	$sql = "Select `name`, `uid`, `email` from `user_info` where `email` = '$email' AND `password` = '$password'";
-echo $sql;
+
 
 	$result = $DB->query( $sql );
 	if ( $result ) {

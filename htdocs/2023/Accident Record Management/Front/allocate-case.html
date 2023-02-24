@@ -1,0 +1,103 @@
+<html>
+<meta charset="utf-8"/>
+<head>
+<link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="./css/animate.css">
+<link rel="stylesheet" type="text/css" href="css/navbar.css">
+
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/home.js"></script>
+</head>
+<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+  <div class="container">
+	<div class="navbar-header">
+	  <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	  </button>
+	  <a href="./" class="navbar-brand">Accident Tracking</a>
+		</div>
+	<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+	  <ul class="nav navbar-nav navbar-right">
+		
+		<li>
+		  <a href="criminals-registration.html">Mv Case Registration</a>
+		</li>
+		<li>	
+		  <a href="add-case.html">Add case</a>
+		</li>
+		<li class="nav-item active">
+		  <a href="allocate-case.html">Allocate Case</a>
+		</li>
+		<li>
+		  <a href="history.html">History</a>
+		</li>
+		<li>
+		  <a href="index.html">Logout</a>
+		</li>
+	  </ul>
+	</nav>
+  </div>
+</header>
+<body>
+	
+<div class="container">
+<br><br>
+	<div class="row">
+		<div class="col-md-4">
+		  <h2>Allocate case</h2>
+		  <div class="form-group">
+			  <label>Aadhar no:</label>
+			  <input id="aadhar" type="text" class="form-control" >
+			</div>
+			<div class="form-group">
+			  <label>First name:</label>
+			  <input id="firstname" type="text" class="form-control" >
+			</div>
+			<div class="form-group">
+			  <label >Last name:</label>
+			  <input id="lastname" type="text" class="form-control" >
+			</div>
+			<div class="form-group">
+			  <label>Mobile no:</label>
+			  <input id="mobile" type="text" class="form-control" >
+			</div>
+			<div class="form-group">
+			  <label>Person Name:(who met an accident)</label>
+			  <input id="pname" type="text" class="form-control" >
+			</div>
+			<div class="form-group">
+			  <label>Vehicle Number:(who met an accident)</label>
+			  <input id="vno" type="text" class="form-control" >
+			</div>
+			<div class="form-group">
+			  <label>Mobile no:(who met an accident)</label>
+			  <input id="pmno" type="text" class="form-control" >
+			</div>
+			<div class="form-group">
+			  <label >Address:</label>
+			  <input id="address" type="text" class="form-control" >
+			</div>
+			 <div class="form-group">
+			  <label for="sel1">Case name:</label>
+			  <select id="casename" class="form-control" id="sel1">
+				
+			 </select>
+			</div> 
+			<div class="form-group">
+			  <label >Description:</label>
+			  <input id="description" type="text" class="form-control" >
+			</div>
+			
+			<div class="form-group">
+				<button onclick="saveAllocate()" type="button" class="btn btn-success">Save</button>
+			</div>
+		</div>
+			
+	</div>
+</div>
+</body>
+</html>

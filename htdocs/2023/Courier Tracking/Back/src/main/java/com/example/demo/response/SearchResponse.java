@@ -4,9 +4,20 @@ public class SearchResponse {
 	private Integer id;
 	private String mobile;
 	private String name;
+	private String fromlocation;
 	private String sendlocation;
 	private String currentlocation;
 	private String address;
+
+	
+	
+	public String getFromlocation() {
+		return fromlocation;
+	}
+
+	public void setFromlocation(String fromlocation) {
+		this.fromlocation = fromlocation;
+	}
 
 	public Integer getId() {
 		return id;

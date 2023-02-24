@@ -11,14 +11,14 @@ $(document).ready(function () {
 		// var eight = $("#8").val();
         $.ajax({
             type: "GET",
-            url: "http://localhost/2020/AGSC/CAR%20SHOP/add_customer.php?fname=" + encodeURIComponent(one) + "?lname=" + two+ "?emailid=" + three+ "?password=" + four+ "?mobile=" + five
+            url: "http://localhost:8080/api/add_customer/" + encodeURIComponent(one) + "/" + two+ "/" + three+ "/" + four+ "/" + five
         }).done(function (data) {
             $("#1").val("");
 			$("#2").val("");
 			$("#3").val("");
 			$("#4").val("");
 			$("#5").val("");
-		 
+			alert(data)
         });
     });	
 });

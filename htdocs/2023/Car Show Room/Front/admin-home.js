@@ -1,7 +1,9 @@
 
 $(document).ready(function () {
-	$("#register").on('click', function () {
-		var one = $("#1").val();
+	loading();
+	$("#register1").on('click', function () {
+		
+		//var one = $("#1").val();
         var two = $("#2").val();
 		var three = $("#3").val();
 		var four = $("#4").val();
@@ -11,9 +13,9 @@ $(document).ready(function () {
 		var eight = $("#8").val();
         $.ajax({
             type: "GET",
-            url: "http://localhost:8080/api/add_car/" + encodeURIComponent(one) + "/" + two+ "/" + three+ "/" + four+ "/" + five+ "/" + six+ "/" + seven+ "/" + eight
+            url: "http://localhost:8080/api/add_car/" +  two+ "/" + three+ "/" + four+ "/" + five+ "/" + six+ "/" + seven+ "/" + eight
         }).done(function (data) {
-            $("#1").val("");
+           // $("#1").val("");
 			$("#2").val("");
 			$("#3").val("");
 			$("#4").val("");
@@ -27,21 +29,23 @@ $(document).ready(function () {
 });
 
 function booking_history(){
+	
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:8080/api/book_histoy"
+		url: "http://localhost:8080/api/get_bookings"
 	}).done(function (data) {
+		var html =``;
 		for(var i=0;i<data.length;i++){
 			var row=data[i];
 			html += ` <tr><th scope="row">`+(i+1)+`</th>
-						 <td>`+row[1]+`</td>
+						 <td>`+row[0]+` `+row[1]+`</td>
 						 <td>`+row[2]+`</td>
 						 <td>`+row[3]+`</td>
 						 <td>`+row[4]+`</td>
 						 <td>`+row[5]+`</td>
 						 <td>`+row[6]+`</td>
 						 <td>`+row[7]+`</td>
-						 <td>`+row[8]+`</td>
+						
 						 </tr>`;
 			
 		}
@@ -51,24 +55,26 @@ function booking_history(){
  function car_details(){
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:8080/api/car_details"
+		url: "http://localhost:8080/api/get_cars"
 	}).done(function (data) {
+
+		var html = ``;
 		for(var i=0;i<data.length;i++){
 			var row=data[i];
 			html += `<div class="card" style="width: 18rem;">
 						<img class="card-img-top" src="./car.jpg" alt="Card image cap">
 						<div class="card-body" >
-							<h5 class="card-title">xxxxxxxx</h5>
-							<p class="card-text">xxxxxxxxxxxxxxxxxxxxxxxxx</p>
+							<h5 class="card-title">`+row[1]+`</h5>
+							<p class="card-text">`+row[2]+`</p>
 						</div>
 						<ul class="list-group list-group-flush">
-							<li class="list-group-item">xxxxxxxxxxxxxxxxx</li>
-							<li class="list-group-item">xxxxxxxx</li>
-							<li class="list-group-item">xxxxxxxx</li>
+							<li class="list-group-item"> Engine : `+row[3]+`</li>
+							<li class="list-group-item">Width : `+row[4]+`</li>
+							<li class="list-group-item">Height : `+row[5]+`</li>
 						</ul>
 						<div class="card-body">
-							<a href="#" class="card-link">xxxxxxx</a>
-							<a href="#" class="card-link">xxxxx</a>
+							<a href="#" class="card-link">Price : $`+row[6]+`</a><br>
+							<a href="#" class="card-link">Released Year :`+row[7]+` </a>
 						</div>
 					</div>`;
 			

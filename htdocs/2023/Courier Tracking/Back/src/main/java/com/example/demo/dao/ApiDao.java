@@ -44,7 +44,7 @@ public class ApiDao {
 
 	public void addCourier(AddCourierRequest body) {
 		Session session = sf.getCurrentSession();
-		String sql = "INSERT INTO `courier` (`id`, `mobile`, `name`, `sendlocation`, `currentlocation`, `address`) VALUES (NULL, '"+body.getMobile()+"', '"+body.getName()+"', '"+body.getSendlocation()+"', '', '"+body.getFulladdress()+"');";
+		String sql = "INSERT INTO `courier` (`id`, `mobile`, `name`,`fromlocation`, `sendlocation`, `currentlocation`, `address`) VALUES (NULL, '"+body.getMobile()+"', '"+body.getName()+"', '"+body.getFromlocation()+"', '"+body.getSendlocation()+"', '', '"+body.getFulladdress()+"');";
 		NativeQuery a = session.createSQLQuery(sql);
 		a.executeUpdate();	
 		

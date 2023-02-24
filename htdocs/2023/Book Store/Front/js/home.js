@@ -220,7 +220,7 @@ function download(isdownload,id,bookname,authorname,price,ext){
 		
 		window.location.href = 'payment.html?id='+final_id+"&bookname="+bookname+"&authorname="+authorname+"&price="+price+"&bookid="+id;
 		}else{
-			window.location.href ="php/upload/gokul."+ext;
+			window.location.href ="php/upload/"+id+"."+ext;
 		}
 }
 
@@ -241,16 +241,17 @@ function getPayment(){
 
 function pay(){
 		var url_string = window.location.href;
-		var url = new URL(url_string);
-		var id = url.searchParams.get("id");
-		var bookid = url.searchParams.get("bookid");
+		var urls = new URL(url_string);
+		var id = urls.searchParams.get("id");
+		var bookid = urls.searchParams.get("bookid");
+		
 		
 	$.ajax({
 			type:"GET",
 			url:url+"/addPayment.php?bookid="+bookid+"&userid="+id,
 			success: function(datas) {
 				alert(datas);
-				window.location="/book/book-details.html?id="+id;
+				window.location="book-details.html?id="+id;
 			},
 		});	
 }

@@ -39,61 +39,46 @@ public class ApiController {
 			@PathVariable String password,
 			@PathVariable String mobile) {
 		dao.add_customer(fname,lname,email,password,mobile);
-		return "Customer Saved Sucessfully";
+		return "Customer Registration Sucessfully Completed";
+	}
+	
+	@GetMapping("/add_car/{carname}/{model}/{engine}/{width}/{height}/{price}/{year}")
+	public String add_car(
+			@PathVariable String carname,
+			@PathVariable String  model,
+			@PathVariable String engine,
+			@PathVariable String width,
+			@PathVariable String height,
+			@PathVariable String price,
+			@PathVariable String year
+			) {
+		dao.add_car(carname,model,engine,width,height,price,year);
+		return "Car Sucessfully Registered";
 	}
 	
 	
-	
-	@GetMapping("/add_requirement/{title}/{desc}/{fe}/{be}/{modules}")
-	public String add_requirement(@PathVariable String title,@PathVariable String desc,
-			@PathVariable String  fe,
-			@PathVariable String be,
-			@PathVariable String modules) {
-		dao.add_requirement(title,desc,fe,be,modules);
-		return "Project Saved Sucessfully";
-	}
-	
-	@GetMapping("/add_intern/{pid}/{sid}")
-	public String add_intern(@PathVariable Integer pid,@PathVariable Integer sid) {
-		dao.add_intern(pid,sid);
-		return "Intern Saved Sucessfully";
-	}
-	
-	
-	@GetMapping("/get_student")
-	public List<Object[]> get_student() {
-		return dao.get_student();
+	@GetMapping("/get_cars")
+	public List<Object[]> get_cars() {
+		return dao.get_cars();
 		
 	}
 	
-	@GetMapping("/get_project")
-	public List<Object[]> get_project() {
-		return dao.get_project();
+	@GetMapping("/add_booking/{customer_id}/{car_id}/{expected}/{suggession}")
+	public String add_booking(@PathVariable String customer_id, @PathVariable String car_id,@PathVariable String expected, @PathVariable String suggession) {
+		dao.add_booking(customer_id,car_id,expected,suggession);
+		return "Booking Sucessfully Completed";
+	}
+	
+	@GetMapping("/get_bookings")
+	public List<Object[]> get_bookings() {
+		return dao.get_bookings();
 		
 	}
 	
-	@GetMapping("/student_getproject/{id}")
-	public List<Object[]> get_project(@PathVariable Integer id) {
-		return dao.student_getproject(id);
-		
-	}
 	
-	@GetMapping("/admin_getproject")
-	public List<Object[]> admin_getproject() {
-		return dao.admin_getproject();
-		
-	}
-	@GetMapping("/view_applicant")
-	public List<Object[]> view_applicant() {
-		return dao.view_applicant();
-		
-	}
+	
 
-	@GetMapping("/upload_code/{pid}/{sid}/{code}")
-	public String upload_code(@PathVariable Integer pid,@PathVariable Integer sid,@PathVariable String code) {
-		dao.upload_code(pid,sid,code);
-		return "Code uploaded Sucessfully";
-	}
+	
 	
 }
 	

@@ -15,19 +15,7 @@ function getProject(){
 	   }
 		
 		$("#1").html(html);
-		$("#1").change(function(){
-			var id= this.value;
-			for(var i=0;i<data.length;i++){
-				var row=data[i];
-				if(row[0]==id){
-					$("#2").val(row[2]);
-					$("#3").val(row[3]);
-					$("#4").val(row[4]);
-					$("#5").val(row[5]);
-					
-				}
-			}
-		});
+		
 	});
 }	
 	

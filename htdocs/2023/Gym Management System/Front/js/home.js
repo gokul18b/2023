@@ -24,7 +24,7 @@ function login(){
 			url:"http://localhost:8080/api/login/"+username+"/"+password,
 			success: function(datas) {
 				if(datas){
-					 window.location="/gym/member-registration.html";
+					 window.location="member-registration.html";
 				}else{
 				alert('Invalid username and password')	
 				}

@@ -105,9 +105,10 @@ public class ApiService {
 			row.setId((Integer) obj[0]);
 			row.setMobile((String)obj[1]);
 			row.setName((String)obj[2]);
-			row.setSendlocation((String)obj[3]);
-			row.setCurrentlocation((String)obj[4]);
-			row.setAddress((String)obj[5]);
+			row.setSendlocation((String)obj[4]);
+			row.setCurrentlocation((String)obj[5]);
+			row.setAddress((String)obj[6]);
+			row.setFromlocation((String)obj[3]);
 			response.add(row);
 		}
 		

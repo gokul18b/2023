@@ -77,6 +77,7 @@ $(document).ready(function () {
             },
         }).done(function (datas) {
             alert(datas);
+            update();
             $("#name1").val("");
             $("#mobile1").val("");
             $("#author1").val("");
@@ -116,6 +117,7 @@ $(document).ready(function () {
             },
         }).done(function (datas) {
             alert(datas);
+            update();
             $("#name2").val("");
             $("#mobile2").val("");
             $("#author2").val("");
@@ -165,6 +167,7 @@ $(document).ready(function () {
             },
         }).done(function (datas) {
             alert(datas);
+            update();
             $("#author3").val("");
             $("#from3").val("");
             $("#to3").val("");

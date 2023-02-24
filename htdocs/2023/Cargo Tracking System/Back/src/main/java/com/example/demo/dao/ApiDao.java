@@ -90,9 +90,16 @@ public class ApiDao {
 	public List<Object[]> get_orders() {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
-		String sql = "SELECT orders.id,customer.name,customer.phone,orders.pickloc,orders.droploc,orders.weight,orders.deliverydate,orders.amount FROM `orders`  LEFT JOIN customer on(customer.id=orders.customer_id) ";
+		String sql = "SELECT orders.id,customer.name,customer.phone,orders.pickloc,orders.droploc,orders.weight,orders.deliverydate,orders.amount,orders.current FROM `orders`  LEFT JOIN customer on(customer.id=orders.customer_id) ";
 		NativeQuery nq = session.createNativeQuery(sql);
 		return nq.list();
+	}
+
+	public void update_location(Integer id, String location) {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "UPDATE `orders` SET `current` = '"+location+"' WHERE `orders`.`id` = "+id;
+		session.createSQLQuery(sql).executeUpdate();
 	}
 
 

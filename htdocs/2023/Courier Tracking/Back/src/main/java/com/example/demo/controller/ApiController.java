@@ -67,11 +67,12 @@ public class ApiController {
 		return ResponseEntity.ok().body(service.addCustomer(body));
 	}
 
-	@PostMapping("/addCourier/{name}/{mobile}/{sendlocation}/{fulladdress}/{amount}/{weight}/{discount}")
-	public ResponseEntity<String> addCourier(@PathVariable("name") String name,@PathVariable("mobile") String mobile,@PathVariable("sendlocation") String sendlocation,@PathVariable("fulladdress") String fulladdress,@PathVariable("amount") Integer amount,@PathVariable("weight") String weight,@PathVariable("discount") String discount) {
+	@PostMapping("/addCourier/{name}/{mobile}/{fromlocation}/{sendlocation}/{fulladdress}/{amount}/{weight}/{discount}")
+	public ResponseEntity<String> addCourier(@PathVariable("name") String name,@PathVariable("mobile") String mobile,@PathVariable("fromlocation") String fromlocation,@PathVariable("sendlocation") String sendlocation,@PathVariable("fulladdress") String fulladdress,@PathVariable("amount") Integer amount,@PathVariable("weight") String weight,@PathVariable("discount") String discount) {
 		AddCourierRequest body = new AddCourierRequest();
 		body.setName(name);
 		body.setMobile(mobile);
+		body.setFromlocation(fromlocation);
 		body.setSendlocation(sendlocation);
 		body.setFulladdress(fulladdress);
 		body.setAmount(amount);

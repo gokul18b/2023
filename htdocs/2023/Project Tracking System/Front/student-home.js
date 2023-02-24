@@ -24,6 +24,10 @@ $(document).ready(function () {
 		$("#content3").hide();
 		$("#content1").hide();
 	});
+
+	$("#tab5").on('click', function () {
+		window.location.href = "index.html"
+	});
    
 	
 	

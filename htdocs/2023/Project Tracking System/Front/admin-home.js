@@ -24,6 +24,12 @@ $(document).ready(function () {
 		$("#content3").hide();
 		$("#content1").hide();
 	});
+
+	$("#tab5").on('click', function () {
+		window.location.href = "index.html"
+	});
+
+	
     $("#student_register").on('click', function () {
 		var one = $("#1").val();
         var two = $("#2").val();

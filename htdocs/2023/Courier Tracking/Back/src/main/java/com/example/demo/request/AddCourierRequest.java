@@ -3,6 +3,7 @@ package com.example.demo.request;
 public class AddCourierRequest {
 	private String mobile;
 	private String name;
+	private String fromlocation;
 	private String sendlocation;
 	private String currentlocation;
 	private String fulladdress;
@@ -12,6 +13,14 @@ public class AddCourierRequest {
 
 	public String getMobile() {
 		return mobile;
+	}
+
+	public String getFromlocation() {
+		return fromlocation;
+	}
+
+	public void setFromlocation(String fromlocation) {
+		this.fromlocation = fromlocation;
 	}
 
 	public void setMobile(String mobile) {

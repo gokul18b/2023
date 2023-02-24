@@ -8,12 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <?php
+    <!-- <?php
     session_start();
     if (!isset($_SESSION['userId']) && !isset($_SESSION['sessionID'])) {
         echo '<script type="text/javascript">location.href = "index.html";</script>';
     }
-    ?>
+    ?> -->
 
     <title>My School</title>
 

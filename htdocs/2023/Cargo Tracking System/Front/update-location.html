@@ -1,0 +1,161 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="bodys">
+
+    <div class="container">
+        <!-- Top Navigation -->
+        <div class="cctop clearfix"> <span class="right"><a href="#"><span>Cargo Tracking</span></a></div>
+        <div class="wrapper">
+            <div class="cctabs">
+                <input checked id="one" name="tabs" type="radio">
+                <label for="one"><i class="fa fa-pencil-square-o"></i> Update Location</label>
+                <input id="six" name="tabs" type="radio">
+                <a href="index.html" for="six"><i class="fa fa-envelope"></i> Logout</a>
+                <div class="panels">
+                    <div class="panel">
+
+                        <div class="unit-2">
+                            <form id="cc-contact" action="" method="post">
+                                <label>Order Number</label>
+                                <input id="1" type="text" tabindex="1" required autofocus>
+                                <label>Location</label>
+                                <input id="2" type="text" tabindex="1" required>
+                                
+                                <button name="button" type="button" id="btn1" data-submit="...Sending">Update</button>
+                            </form>
+                        </div>
+
+                    </div>
+
+                    <div class="panel">
+                        <div class="unit-2">
+                            <form id="cc-contact" action="" method="post">
+                                <label>Ship Type</label>
+                                <input id="11" type="text" tabindex="1" required autofocus>
+                                <label>Vehicle Number</label>
+                                <input id="12" type="text" tabindex="1" required>
+                                <label>Vehicle Model</label>
+                                <input id="13" type="text" tabindex="1" required>
+                                <button name="submit" type="button" id="btn2" data-submit="...Sending">Register</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="unit-2">
+                            <form id="cc-contact" action="" method="post">
+                                <label>Select Ship</label>
+                                <select id="20" class="form-control" id="sel1">
+
+                                </select>
+                                <label>Select Customer</label>
+                                <select id="21" class="form-control" id="sel1">
+
+                                </select>
+                                <label>Address</label>
+                                <input id="22" type="text" tabindex="1" required>
+                                <label>Pick up date</label>
+                                <input id="23" type="text" tabindex="1" required>
+                                <label>Delivery date</label>
+                                <input id="24" type="text" tabindex="1" required>
+                                <label>Weight</label>
+                                <input id="25" type="text" tabindex="1" required>
+                                <label>Packing type</label>
+                                <input id="26" type="text" tabindex="1" required>
+                                <label>Company Name</label>
+                                <input id="27" type="text" tabindex="1" required>
+                                <label>Company Address</label>
+                                <input id="28" type="text" tabindex="1" required>
+                                <label>Mobile number</label>
+                                <input id="29" type="text" tabindex="1" required>
+                                <label>Pick location</label>
+                                <input id="30" type="text" tabindex="1" required>
+                                <label>Drop location</label>
+                                <input id="31" type="text" tabindex="1" required>
+                                <label>Amount</label>
+                                <input id="32" type="text" tabindex="1" required>
+                                <button name="submit" type="button" id="btn3" data-submit="...Sending">Register</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="-2">
+                            <label>Address</label>
+                            <input id="22" type="text" tabindex="1" required>
+                        </div>
+
+                    </div>
+                    <div class="panel">
+                        <div class="-2">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Order Number</th>
+                                        <th scope="col">Customer Name</th>
+                                        <th scope="col">Mobile</th>
+                                        <th scope="col">From Location</th>
+                                        <th scope="col">Drop Location</th>
+                                        <th scope="col">Weight</th>
+                                        <th scope="col">Delivery Date</th>
+                                        <th scope="col">Amount</th>
+                                        <th scope="col">Current Location</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody id="body4">
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    $(document).ready(function () {
+        load();
+    })
+
+    $("#btn1").on('click', function () {
+
+        var one = $("#1").val();
+        var two = $("#2").val();
+       
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/update_location/" + encodeURIComponent(one) + "/" + two 
+        }).done(function (data) {
+            console.log(data)
+
+            $("#1").val("");
+            $("#2").val("");
+        
+           
+            alert(data)
+        });
+    });
+
+   
+
+</script>
+
+</html>

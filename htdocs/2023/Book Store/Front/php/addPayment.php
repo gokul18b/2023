@@ -7,7 +7,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
       $userid = mysqli_real_escape_string($db,$_GET['userid']); 
      
       $sql = "INSERT INTO `payment` (`id`, `bookid`, `userid`, `purchasestatus`) VALUES (NULL, '$bookid', '$userid', '1');";
-      
+     // echo $sql;
+//      exit;
 	  if ($db->query($sql) === TRUE) {
 			echo "Payment sucessfully completed";
 		} else {

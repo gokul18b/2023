@@ -41,8 +41,18 @@ public class ApiController {
 			@PathVariable String  pincode
 			) {
 		dao.add_customer(name,email,phone,address,pincode);
-		return "Customer Register Sucessfully";
+		return "Customer Sucessfully Register";
 	}
+	
+	@GetMapping("/update_location/{id}/{location}")
+	public String update_location(@PathVariable Integer id,
+			@PathVariable String location
+			) {
+		dao.update_location(id,location);
+		return "Location Sucessfully Updated";
+	}
+	
+	
 	@GetMapping("/add_ship/{type}/{number}/{model}")
 	public String add_ship(@PathVariable String type,
 			@PathVariable String number,
@@ -69,6 +79,8 @@ public class ApiController {
 		dao.add_order(shipid,cusid,address,picdate,deliverydate,weight,packing,comname,comaddress,mobile,picklocation,droplocation,amount);
 		return "Order Register Sucessfully";
 	}
+	
+	
 	
 	
 	@GetMapping("/get_customers")
