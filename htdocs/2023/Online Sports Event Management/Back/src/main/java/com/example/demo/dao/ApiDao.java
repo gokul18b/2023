@@ -13,10 +13,7 @@ import org.hibernate.query.NativeQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.controller.SELECT;
-import com.example.demo.controller.event;
-import com.example.demo.controller.left;
-import com.example.demo.controller.team;
+
 
 @Repository
 @Transactional

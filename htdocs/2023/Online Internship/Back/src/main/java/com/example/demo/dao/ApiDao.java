@@ -51,6 +51,14 @@ public String login(String username, String password) {
 		NativeQuery nq = session.createNativeQuery(sql);
 		return nq.list();
 	}
+	
+	public List<Object[]> get_project_id(Integer id) {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "select * from requirement where id="+id;
+		NativeQuery nq = session.createNativeQuery(sql);
+		return nq.list();
+	}
 
 
 	

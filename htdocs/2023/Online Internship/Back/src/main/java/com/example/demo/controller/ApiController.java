@@ -91,6 +91,12 @@ public class ApiController {
 		return dao.view_applicant();
 		
 	}
+	
+	@GetMapping("/get_project_id/{id}")
+	public List<Object[]> get_project_id(@PathVariable Integer id) {
+		return dao.get_project_id(id);
+		
+	}
 
 	@GetMapping("/upload_code/{pid}/{sid}/{code}")
 	public String upload_code(@PathVariable Integer pid,@PathVariable Integer sid,@PathVariable String code) {

@@ -47,9 +47,12 @@
     });
 
     function book_house(id) {
+        const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		const uid = urlParams.get('id')
         $.ajax({
             type: "GET",
-            url: "http://localhost:8080/api/add_booking/1/" + id
+            url: "http://localhost:8080/api/add_booking/"+uid+"/" + id
         }).done(function (data) {
             getHouses();
             alert(data)
@@ -58,9 +61,12 @@
     }
 
     function getHouses() {
+        const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		const id = urlParams.get('id')
         $.ajax({
             type: "GET",
-            url: "http://localhost:8080/api/get_houses/1"
+            url: "http://localhost:8080/api/get_houses/"+id
         }).done(function (data) {
 
             var html = ''
