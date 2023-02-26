@@ -40,6 +40,11 @@ public class ApiController {
 		return "User Register Sucessfully";
 	}
 	
+	@GetMapping("/test")
+	public String test() {
+		return "test";
+	}
+	
 	@GetMapping("/add_event/{name}/{category}/{amount}/{total}/{location}/"
 			+ "{contactperson}/{mobile}/{eventdate}")
 	public String add_event(@PathVariable String name,

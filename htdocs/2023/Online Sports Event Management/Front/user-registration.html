@@ -1,0 +1,92 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="./style.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</head>
+
+<body class="bodys">
+
+  <div class="wrapper">
+    <ul class="tabs">
+      <li><a href="javascript:void(0); return false;" rel="#tabcontent1" class="tab active">User Registration</a></li>
+
+    </ul>
+
+    <div class="tab_content_container">
+      <div class="tab_content tab_content_active" id="tabcontent1">
+        <div class="form-group">
+          <label>Mobile</label>
+          <input class="form-control" id="1">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input class="form-control" id="2">
+        </div>
+        <div class="form-group">
+          <label>Username</label>
+          <input class="form-control" id="3">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input class="form-control" id="4">
+        </div>
+
+        <button type="button" id="register" class="btn btn-primary">Register</button>
+      </div>
+
+
+
+    </div>
+  </div>
+</body>
+<script>
+  $(document).ready(function () {
+    $(".tabs li a").click(function () {
+
+      // Active state for tabs
+      $(".tabs li a").removeClass("active");
+      $(this).addClass("active");
+
+      // Active state for Tabs Content
+      $(".tab_content_container > .tab_content_active").removeClass("tab_content_active").fadeOut(200);
+      $(this.rel).fadeIn(500).addClass("tab_content_active");
+
+    });
+
+  });
+
+  
+
+  $("#register").on('click', function () {
+    var one = $("#1").val();
+    var two = $("#2").val();
+    var three = $("#3").val();
+    var four = $("#4").val();
+   
+
+    $.ajax({
+      type: "GET",
+      url: "http://localhost:8080/api/add_user/" + encodeURIComponent(one) + "/" + two + "/" + three + "/" + four 
+    }).done(function (data) {
+      $("#1").val("");
+      $("#2").val("");
+      $("#3").val("");
+      $("#4").val("");
+    
+
+      alert(data);
+
+    });
+  });
+
+
+
+</script>
+
+</html>

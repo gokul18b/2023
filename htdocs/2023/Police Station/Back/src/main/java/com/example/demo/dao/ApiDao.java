@@ -41,7 +41,7 @@ public class ApiDao {
 	public void complaint_action(Integer complaint_id,String status) {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
-		String sql = "UPDATE `complaint` SET `status` = '"+status+"' WHERE `complaint`.`citizen_id` = "+complaint_id+";";
+		String sql = "UPDATE `complaint` SET `status` = '"+status+"' WHERE `complaint`.`id` = "+complaint_id+";";
 		session.createSQLQuery(sql).executeUpdate();
 	}
 	
@@ -56,14 +56,14 @@ public class ApiDao {
 	public List<Object[]> get_complaints() {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
-		String sql = "SELECT station.code,citizen.fname,citizen.mobile as mob,complaint.name as name1,complaint.mobile,complaint.reason,complaint.address,complaint.youraddress FROM `complaint` left JOIN station on (station.id=complaint.station_id) left join citizen on(citizen.id=complaint.citizen_id) where complaint.citizen_id";
+		String sql = "SELECT station.code,citizen.fname,citizen.mobile as mob,complaint.name as name1,complaint.mobile,complaint.reason,complaint.address,complaint.youraddress, complaint.id, complaint.status FROM `complaint` left JOIN station on (station.id=complaint.station_id) left join citizen on(citizen.id=complaint.citizen_id) where complaint.citizen_id";
 		NativeQuery nq = session.createNativeQuery(sql);
 		return nq.list();
 	}
 	public List<Object[]> get_complaints(Integer id) {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
-		String sql = "SELECT station.code,complaint.name,complaint.mobile,complaint.reason,complaint.address,complaint.youraddress FROM `complaint` left JOIN station on (station.id=complaint.station_id) where complaint.citizen_id="+id;
+		String sql = "SELECT station.code,complaint.name,complaint.mobile,complaint.reason,complaint.address,complaint.youraddress,complaint.status FROM `complaint` left JOIN station on (station.id=complaint.station_id) where complaint.citizen_id="+id;
 		NativeQuery nq = session.createNativeQuery(sql);
 		return nq.list();
 	}
@@ -74,21 +74,28 @@ public class ApiDao {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
 		String sql = "INSERT INTO `complaint` (`id`, `citizen_id`,`station_id`, `mobile`, `address`, `reason`, `status`, `name`, `youraddress`) VALUES"
-				+ "(NULL, '"+citizen_id+"','"+station_id+"', '"+mobile+"', '"+address+"', '"+reason+"','0','"+name+"','"+youraddress+"');";
+				+ "(NULL, '"+citizen_id+"','"+station_id+"', '"+mobile+"', '"+address+"', '"+reason+"','1','"+name+"','"+youraddress+"');";
 		session.createSQLQuery(sql).executeUpdate();
 	}
 
 
 
-	public Boolean login(String username, String password) {
+	public String login(String username, String password) {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
 		String sql = "select * from admin where username='"+username+"' and password='"+password+"'";;
 		NativeQuery nq = session.createNativeQuery(sql);
 		if (nq.list().size() != 0) {
-			return true;
+			return "admin";
 		} else {
-			return false;
+			String sql1 = "select * from citizen where username='"+username+"' and password='"+password+"'";;
+			NativeQuery nq1 = session.createNativeQuery(sql1);
+			if (nq1.list().size() != 0) {
+				List<Object[]> a = nq1.list();
+				return "id=" + a.get(0)[0];
+			}else{
+				return "invalid";
+			} 
 		}
 	}
 

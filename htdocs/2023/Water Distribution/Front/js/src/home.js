@@ -49,7 +49,7 @@ function login(){
 			success: function(datas) {
 				
 				if(datas){
-					 window.location="/water/customer-registration.html";
+					 window.location="customer-registration.html";
 				}else{
 				alert('Invalid username and password')	
 				}

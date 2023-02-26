@@ -26,77 +26,181 @@
             <section id="content1">
                 <div class="form-group">
                     <label>Station Code</label>
-                    <select class="form-control">
+                    <select id="1" class="form-control">
                         <option>Select Code</option>
-                      </select>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>Complaint Person Name</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="2">
                 </div>
                 <div class="form-group">
                     <label>Contact Number</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="3">
                 </div>
                 <div class="form-group">
                     <label>Complaint Issue</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="4">
                 </div>
                 <div class="form-group">
                     <label>Complaint person Address</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="5">
                 </div>
                 <div class="form-group">
                     <label>Your Address</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="6">
                 </div>
-                
-                <button type="submit" class="btn btn-primary">Create Complaint</button>
+
+                <button type="button" id="register" class="btn btn-primary">Create Complaint</button>
             </section>
             <section id="content2">
                 <table class="table table-bordered">
                     <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Station Code</th>
-                        <th scope="col">Person Name</th>
-                        <th scope="col">Contact number</th>
-                        <th scope="col">Complaint Issue</th>
-                        <th scope="col">Person Address</th>
-                        <th scope="col">Your Address</th> 
-                        <th scope="col">Complaint Status</th>                      
-                      </tr>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Station Code</th>
+                            <th scope="col">Person Name</th>
+                            <th scope="col">Contact number</th>
+                            <th scope="col">Complaint Issue</th>
+                            <th scope="col">Person Address</th>
+                            <th scope="col">Your Address</th>
+                            <th scope="col">Complaint Status</th>
+                        </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>xxxxx</td>
-                        <td>xxxxx</td>
-                        <td>xxxxx</td>
-                        <td>xxxxx</td>
-                        <td>xxxxx</td>
-                        <td>xxxxx</td>
-                        <td>xxxxx</td>                        
-                      </tr>
-                     
+                    <tbody id="tbody">
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>xxxxx</td>
+                            <td>xxxxx</td>
+                            <td>xxxxx</td>
+                            <td>xxxxx</td>
+                            <td>xxxxx</td>
+                            <td>xxxxx</td>
+                            <td>xxxxx</td>
+                        </tr>
+
                     </tbody>
-                  </table>
+                </table>
             </section>
             <section id="content3">
-                
+
             </section>
             <section id="content4">
-                
+
             </section>
         </div>
         <footer>
-            
+
         </footer>
     </main>
 </body>
 <script>
-    
 
+    $(document).ready(function () {
+        $('#content1').css('visibility', 'visible');
+        $('#content2').css('visibility', 'hidden');
+        loading();
+        $("#tab1").on('click', function () {
+            $('#content1').css('visibility', 'visible');
+            $('#content2').css('visibility', 'hidden');
+        })
+        $("#tab2").on('click', function () {
+            $('#content2').css('visibility', 'visible');
+            $('#content1').css('visibility', 'hidden');
+        })
+        $("#tab4").on('click', function () {
+            window.location.href = "index.html"
+        })
+    })
+
+    $("#register").on('click', function () {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const id = urlParams.get('id')
+
+        var one = $("#1").val();
+        var two = $("#2").val();
+        var three = $("#3").val();
+        var four = $("#4").val();
+        var five = $("#5").val();
+        var six = $("#6").val();
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/add_complaint/" + id + "/" + encodeURIComponent(one) + "/" + two + "/" + three + "/" + four + "/" + five + "/" + six
+        }).done(function (data) {
+            $("#1").val("");
+            $("#2").val("");
+            $("#3").val("");
+            $("#4").val("");
+            $("#5").val("");
+            $("#6").val("");
+
+            alert(data);
+            loading();
+        });
+    });
+
+    function loading() {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/get_station"
+        }).done(function (data) {
+
+            var html = ''
+            for (i = 0; i < data.length; i++) {
+                html += `<option value=` + data[i][0] + `>` + data[i][1] + `</option>`;
+            }
+
+            $("#1").html(html)
+        });
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const id = urlParams.get('id')
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/get_complaints/"+id
+        }).done(function (data) {
+
+           
+
+            var html = ''
+            for (i = 0; i < data.length; i++) {
+                var status = data[i][6];
+                var dstatus = 'Action Requested';
+                if (status == 1) {
+                    dstatus = 'Action Requested';
+                } else if (status == 2) {
+                    dstatus = 'In Review';
+                } else if (status == 3) {
+                    dstatus = 'In progress';
+                } else if (status == 4) {
+                    dstatus = 'Verified'
+                } else if (status == 5) {
+                    dstatus = 'Completed'
+                }
+                html += `<tr>
+                        <th scope="row">`+ (i + 1) + `</th>
+                        <td>`+ data[i][2] + `</td>
+                        <td>`+ data[i][3] + `</td>
+                        <td>`+ data[i][0] + `</td>
+                        <td>`+ data[i][1] + `</td>
+                        <td>`+ data[i][4] + `</td>  
+                        <td>`+ data[i][5] + `</td>    
+                        <td>`+ dstatus + `</td>                  
+                        
+
+                    </tr>`;
+            }
+
+            $("#tbody").html(html)
+        });
+
+
+
+    }
 </script>
 
 </html>

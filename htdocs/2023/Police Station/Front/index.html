@@ -1,7 +1,8 @@
 <html>
 
 <head>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"
+        id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="./loginstyle.css" />
@@ -12,25 +13,43 @@
             <h3>Police Station</h3>
 
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="" value="" />
+                <input type="text" id="1" class="form-control" placeholder="" value="" />
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="" value="" />
+                <input type="password" id="2" class="form-control" placeholder="" value="" />
             </div>
             <div class="form-group">
-                <input type="submit" class="btnSubmit" value="Login" />
+                <input type="button" id="login" class="btnSubmit" value="Login" />
             </div>
             <div class="form-group">
                 <a href="citizen-registration.html" class="btnForgetPwd">Registration</a>
             </div>
 
         </div>
-        
+
     </div>
 </div>
-<body class="body">
-    
-</body>
 
+<body class="body">
+
+</body>
+<script>
+    $("#login").on('click', function () {
+        var one = $("#1").val();
+        var two = $("#2").val();
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/login/" + encodeURIComponent(one) + "/" + two
+        }).done(function (data) {
+            if (data == "admin") {
+                window.location.href = "admin-home.html";
+            } else if (data == "invalid") {
+                alert("Invalid username or password")
+            } else {
+                window.location.href = "citizen-home.html?" + data
+            }
+        });
+    });
+</script>
 
 </html>

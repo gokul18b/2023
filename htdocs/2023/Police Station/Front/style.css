@@ -6,6 +6,7 @@ body {
   font-family: "Open Sans", "Arial";
 }
 main {
+	height:200%;
   max-width: 90%;
   margin: 30px auto;
 	background: #3F3F3D;

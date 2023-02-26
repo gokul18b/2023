@@ -24,35 +24,35 @@
             <div class="tab_content tab_content_active" id="tabcontent1">
                 <div class="form-group">
                     <label>Team Name</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="1">
                 </div>
                 <div class="form-group">
                     <label>Total members</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="2">
                 </div>
                 <div class="form-group">
                     <label>Captain Name</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="3">
                 </div>
                 <div class="form-group">
                     <label>Mobile Number 1</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="4">
                 </div>
                 <div class="form-group">
                     <label>Mobile Number 2</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="5">
                 </div>
                 <div class="form-group">
                     <label>Address</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="6">
                 </div>
-                <button type="submit" class="btn btn-primary">Register</button>
+                <button id="register" type="button" class="btn btn-primary">Register</button>
             </div>
 
             <div class="tab_content" id="tabcontent2">
                 <div class="form-group">
                     <label>Select Event</label>
-                    <select class="form-control form-control-lg">
+                    <select id="18" class="form-control form-control-lg">
                         <option>select event</option>
                     </select>
                 </div>
@@ -61,40 +61,40 @@
 
                 <div class="form-group">
                     <label>Select Team</label>
-                    <select class="form-control form-control-lg">
+                    <select id="19" class="form-control form-control-lg">
                         <option>select event</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label>Category</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="11">
                 </div>
                 <div class="form-group">
                     <label>Amount</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="12">
                 </div>
                 <div class="form-group">
                     <label>Total Teams</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="13">
                 </div>
                 <div class="form-group">
                     <label>Location</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="14">
                 </div>
                 <div class="form-group">
                     <label>Contact Person</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="15">
                 </div>
                 <div class="form-group">
                     <label>Mobile Number</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="16">
                 </div>
                 <div class="form-group">
                     <label>Event Date</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="17">
                 </div>
-                <button type="submit" class="btn btn-primary">Book Event</button>
+                <button type="button" id="register1" class="btn btn-primary">Book Event</button>
 
                 <div class="tab_content" id="tabcontent4">
                 </div>
@@ -117,9 +117,97 @@
             $(this.rel).fadeIn(500).addClass("tab_content_active");
 
         });
-
+        loading();
     });
 
+    function loading() {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/get_events"
+        }).done(function (data) {
+
+            var html = ''
+            for (i = 0; i < data.length; i++) {
+                html += `<option value=` + data[i][0] + `>` + data[i][1] + `</option>`;
+            }
+            $("#18").html(html);
+
+        });
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const id = urlParams.get('id')
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/get_teams/" + id
+        }).done(function (data) {
+
+            var html = ''
+            for (i = 0; i < data.length; i++) {
+                html += `<option value=` + data[i][0] + `>` + data[i][2] + `</option>`;
+            }
+            $("#19").html(html);
+
+        });
+    }
+
+    $("#register").on('click', function () {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const id = urlParams.get('id')
+        var one = $("#1").val();
+        var two = $("#2").val();
+        var three = $("#3").val();
+        var four = $("#4").val();
+        var five = $("#5").val();
+        var six = $("#6").val();
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/add_team/" + id + "/" + encodeURIComponent(one) + "/" + two + "/" + three + "/" + four + "/" + five + "/" + six
+        }).done(function (data) {
+            $("#1").val("");
+            $("#2").val("");
+            $("#3").val("");
+            $("#4").val("");
+            $("#5").val("");
+            $("#6").val("");
+
+
+            alert(data);
+
+        });
+    });
+
+
+    $("#register1").on('click', function () {
+        var one = $("#11").val();
+        var two = $("#12").val();
+        var three = $("#13").val();
+        var four = $("#14").val();
+        var five = $("#15").val();
+        var six = $("#16").val();
+        var seven = $("#17").val();
+        var eight = $("#18").val();
+        var nine = $("#19").val();
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/book_event/" + eight + "/" + nine + "/" + encodeURIComponent(one) + "/" + two + "/" + three + "/" + four + "/" + five + "/" + six + "/" + seven 
+        }).done(function (data) {
+                $("#11").val("");
+                $("#12").val("");
+                $("#13").val("");
+                $("#14").val("");
+                $("#15").val("");
+                $("#16").val("");
+                $("#17").val("");
+
+                alert(data);
+
+            });
+    });
 </script>
 
 </html>

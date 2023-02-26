@@ -26,37 +26,37 @@
             <section id="content1">
                 <div class="form-group">
                     <label>Station Name</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="1">
                 </div>
                 <div class="form-group">
                     <label>Station Code</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="2">
                 </div>
                 <div class="form-group">
                     <label>Address 1</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="3">
                 </div>
                 <div class="form-group">
                     <label>Address 2</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="4">
                 </div>
                 <div class="form-group">
                     <label>City</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="5">
                 </div>
                 <div class="form-group">
                     <label>State</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="6">
                 </div>
                 <div class="form-group">
                     <label>Pincode</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="7">
                 </div>
                 <div class="form-group">
                     <label>Landline Number</label>
-                    <input class="form-control" id="exampleInputPassword1">
+                    <input class="form-control" id="8">
                 </div>
-                <button type="submit" class="btn btn-primary">Create Station</button>
+                <button type="button" id="register" class="btn btn-primary">Create Station</button>
             </section>
             <section id="content2">
                 <table class="table table-bordered">
@@ -74,7 +74,7 @@
                             <th scope="col">Complaint Status</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbody">
                         <tr>
                             <th scope="row">1</th>
                             <td>xxxxx</td>
@@ -105,6 +105,132 @@
 </body>
 <script>
 
+
+    $(document).ready(function () {
+        loading();
+        $("#tab4").on('click', function () {
+            window.location.href = "index.html"
+        })
+        $('#content1').css('visibility', 'visible');
+        $('#content2').css('visibility', 'hidden');
+
+        $("#tab1").on('click', function () {
+            $('#content1').css('visibility', 'visible');
+            $('#content2').css('visibility', 'hidden');
+        })
+        $("#tab2").on('click', function () {
+            $('#content2').css('visibility', 'visible');
+            $('#content1').css('visibility', 'hidden');
+        })
+    })
+
+
+    function loading() {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/get_complaints"
+        }).done(function (data) {
+
+
+            var html = ''
+            for (i = 0; i < data.length; i++) {
+                var status = data[i][9];
+                var dstatus = 'Action Requested';
+                if (status == 1) {
+                    dstatus = 'Action Requested';
+                } else if (status == 2) {
+                    dstatus = 'In Review';
+                } else if (status == 3) {
+                    dstatus = 'In progress';
+                } else if (status == 4) {
+                    dstatus = 'Verified'
+                } else if (status == 5) {
+                    dstatus = 'Completed'
+                }
+
+                html += `<tr>
+                        <th scope="row">`+ (i + 1) + `</th>
+                        <td>`+ data[i][2] + `</td>
+                        <td>`+ data[i][3] + `</td>
+                        <td>`+ data[i][0] + `</td>
+                        <td>`+ data[i][1] + `</td>
+                        <td>`+ data[i][4] + `</td>  
+                        <td>`+ data[i][5] + `</td>  
+                        <td>`+ data[i][6] + `</td>  
+                        <td>`+ data[i][7] + `</td>                  
+                        <td><button type="button" onclick="updatestatus(`+ data[i][8] + `,` + data[i][9] + `)" class="btn btn-primary">`+dstatus+`</button></td>
+
+                    </tr>`;
+            }
+
+            $("#tbody").html(html)
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/get_complaints"
+        }).done(function (data) {
+
+            var html = ''
+            for (i = 0; i < data.length; i++) {
+                html += `<tr>
+                        <th scope="row">`+ (i + 1) + `</th>
+                        <td>`+ data[i][2] + `</td>
+                        <td>`+ data[i][3] + `</td>
+                        <td>`+ data[i][0] + `</td>
+                        <td>`+ data[i][1] + `</td>
+                        <td>`+ data[i][4] + `</td>
+                   
+                       
+
+                    </tr>`;
+
+
+                html += `<option value=` + data[i][0] + `>` + data[i][1] + `</option>`;
+            }
+        });
+
+
+    }
+
+    function updatestatus(id, status) {
+        if (status < 5) {
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8080/api/complaint_action/" + encodeURIComponent(id) + "/" + (status + 1)
+            }).done(function (data) {
+                alert(data)
+                loading();
+            });
+        }
+    }
+    $("#register").on('click', function () {
+        var one = $("#1").val();
+        var two = $("#2").val();
+        var three = $("#3").val();
+        var four = $("#4").val();
+        var five = $("#5").val();
+        var six = $("#6").val();
+        var seven = $("#7").val();
+        var eight = $("#8").val();
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/station_register/" + encodeURIComponent(one) + "/" + two + "/" + three + "/" + four + "/" + five + "/" + six + "/" + seven + "/" + eight
+        }).done(function (data) {
+            $("#1").val("");
+            $("#2").val("");
+            $("#3").val("");
+            $("#4").val("");
+            $("#5").val("");
+            $("#6").val("");
+            $("#7").val("");
+            $("#8").val("");
+
+            alert(data);
+
+        });
+    });
 
 </script>
 
