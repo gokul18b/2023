@@ -42,15 +42,31 @@ public class ApiDao {
 	
 
 
-	public Boolean login(String username, String password) {
+	public String login(String username, String password) {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
 		String sql = "select * from admin where username='"+username+"' and password='"+password+"'";;
 		NativeQuery nq = session.createNativeQuery(sql);
 		if (nq.list().size() != 0) {
-			return true;
+			return "admin";
 		} else {
-			return false;
+			String sql1 = "select * from manager where username='"+username+"' and password='"+password+"'";;
+			NativeQuery nq1 = session.createNativeQuery(sql1);
+			if (nq1.list().size() != 0) {
+				List<Object[]> a = nq1.list();
+				return "manager-home.html?bankId=" + a.get(0)[1];
+				
+			}else{
+				String sql2 = "select * from customer where status='Approved' and aadhar='"+username+"' and mobile='"+password+"'";;
+				NativeQuery nq2 = session.createNativeQuery(sql2);
+				if (nq2.list().size() != 0) {
+					List<Object[]> a = nq2.list();
+					return "customer-home.html?id=" + a.get(0)[0];
+					//return "customer";
+				}else{
+					return "Invalid";
+				}
+			}
 		}
 	}
 	public Boolean manager_login(String username, String password) {

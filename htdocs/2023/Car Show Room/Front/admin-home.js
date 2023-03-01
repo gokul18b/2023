@@ -23,7 +23,7 @@ $(document).ready(function () {
 			$("#6").val("");
 			$("#7").val("");
 			$("#8").val("");
-			alert(date)
+			alert(data)
         });
 	});
 });

@@ -35,8 +35,9 @@ function car_details() {
 		const queryString = window.location.search;
 		const urlParams = new URLSearchParams(queryString);
 		const customer_id = urlParams.get('id')
+		var html = ``;
 		for (var i = 0; i < data.length; i++) {
-			var html = ``;
+			
 			var row = data[i];
 
 			html += `<div class="card" style="width: 18rem;">

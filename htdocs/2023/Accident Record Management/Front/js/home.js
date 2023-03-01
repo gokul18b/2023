@@ -47,8 +47,8 @@ function searchHistory(){
 								<td>`+data.personname+`</td>
 								<td>`+data.mobile+`</td>
 								<td>`+data.vehicle+`</td>
-								<td>`+data.casename+` Inspector</td>
-								<td>`+data.description+` Inspector</td>
+								<td>`+data.casename+`</td>
+								<td>`+data.description+`</td>
 							  </tr>`;
 						
 					}

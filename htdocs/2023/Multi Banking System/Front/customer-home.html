@@ -38,11 +38,11 @@
                     <button type="submit" class="btn btn-primary">Payment</button>
                 </div>
             </div>
-            <div class="tab">
+            <div id="logout" class="tab">
                 <input type="radio" name="css-tabs" id="tab-2" class="tab-switch">
                 <label for="tab-2" class="tab-label">Logout</label>
                 <div class="tab-content">
-                    
+
                 </div>
             </div>
 
@@ -63,6 +63,14 @@
             $(this.rel).fadeIn(500).addClass("tab_content_active");
 
         });
+
+        $("#logout").click(function () {
+
+            window.location.href = "index.html"
+
+        });
+
+
 
     });
 

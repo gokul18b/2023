@@ -28,7 +28,7 @@ public class ApiController {
 	ApiDao dao;
 
 	@GetMapping("/login/{username}/{password}")
-	public Boolean login(@PathVariable String username,@PathVariable String password) {
+	public String login(@PathVariable String username,@PathVariable String password) {
 		return service.login(username,password);
 	}
 	@GetMapping("/add_user/{mobile}/{email}/{username}/{password}")

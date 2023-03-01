@@ -28,7 +28,7 @@ public class ApiDao {
 		if (nq.list().size() != 0) {
 			return "admin";
 		} else {
-			String sql1 = "select * from student where username='" + username + "' and password='" + password + "'";
+			String sql1 = "select * from user where username='" + username + "' and password='" + password + "'";
 			;
 			NativeQuery nq1 = session.createNativeQuery(sql1);
 			if (nq1.list().size() != 0) {

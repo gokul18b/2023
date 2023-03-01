@@ -26,7 +26,7 @@ public class ApiService {
 
 	
 
-	public Boolean login(String username, String password) {
+	public String login(String username, String password) {
 		// TODO Auto-generated method stub
 		return dao.login(username,password);
 	}

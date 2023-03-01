@@ -28,15 +28,29 @@ public class ApiDao {
 		return nq.list();
 	}
 
-	public Boolean login(String username, String password) {
+	public String login(String username, String password) {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
 		String sql = "select * from admin where username='"+username+"' and password='"+password+"'";;
 		NativeQuery nq = session.createNativeQuery(sql);
 		if (nq.list().size() != 0) {
-			return true;
+			return "admin";
 		} else {
-			return false;
+			String sql1 = "select * from agent where email='"+username+"' and password='"+password+"'";;
+			NativeQuery nq1 = session.createNativeQuery(sql1);
+			if (nq1.list().size() != 0) {
+				return "manager";
+			}else{
+				String sql2 = "select * from customer where username='"+username+"' and password='"+password+"'";;
+				NativeQuery nq2 = session.createNativeQuery(sql2);
+				if (nq2.list().size() != 0) {
+					List<Object[]> a = nq2.list();
+					return "id=" + a.get(0)[0];
+					//return "customer";
+				}else{
+					return "Invalid";
+				}
+			}
 		}
 	}
 

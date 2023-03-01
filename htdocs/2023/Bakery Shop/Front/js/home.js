@@ -10,7 +10,7 @@ $(document).ready(function(){
 			type:"GET",
 			url:"http://localhost:8080/api/get_customer/"+$("#sal_mobile").val(),
 			success: function(datas) {
-				alert(datas)
+				
 				customer_id=datas;
 			},
 		});	
@@ -35,7 +35,7 @@ function login(){
 			url:"http://localhost:8080/api/login/"+username+"/"+password,
 			success: function(datas) {
 				if(datas){
-					 window.location="/furniture/customer-registration.html";
+					 window.location="customer-registration.html";
 				}else{
 				alert('Invalid username and password')	
 				}

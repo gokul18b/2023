@@ -132,7 +132,7 @@
 </body>
 <script>
 
-$(document).ready(function () {
+    $(document).ready(function () {
         //
         $("#tab4").on('click', function () {
             window.location.href = "index.html"
@@ -148,10 +148,10 @@ $(document).ready(function () {
         var five = $("#5").val();
         var six = $("#6").val();
         var seven = $("#7").val();
-       
+
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/api/policy_register/" + encodeURIComponent(one) + "/" + two + "/" + three + "/" + four + "/" + five + "/" + six + "/" + seven 
+            url: "http://localhost:8080/api/policy_register/" + encodeURIComponent(one) + "/" + two + "/" + three + "/" + four + "/" + five + "/" + six + "/" + seven
         }).done(function (data) {
             $("#1").val("");
             $("#2").val("");
@@ -160,7 +160,7 @@ $(document).ready(function () {
             $("#5").val("");
             $("#6").val("");
             $("#7").val("");
-          
+
             alert(data)
         });
     });
@@ -179,7 +179,7 @@ $(document).ready(function () {
         var ten = $("#20").val();
         var lev1 = $("#21").val();
         var lev2 = $("#22").val();
-       
+
         $.ajax({
             type: "POST",
             url: "http://localhost:8080/api/add_customer/" + encodeURIComponent(one) + "/" + two + "/" + three + "/" + four + "/" + five + "/" + six + "/" + seven + "/" + eight + "/" + nine + "/" + ten + "/" + lev1 + "/" + lev2
@@ -196,7 +196,7 @@ $(document).ready(function () {
             $("#20").val("");
             $("#21").val("");
             $("#22").val("");
-           
+
             alert(data)
         });
     });

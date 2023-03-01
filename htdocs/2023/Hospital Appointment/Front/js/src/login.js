@@ -17,12 +17,12 @@ function login(){
 			url:"http://localhost:8080/api/login/"+username+"/"+password,
 			success: function(datas) {
 				if((username=='admin') && (password=='admin')){
-					window.location.href="/appointment/patient-registration.html";
+					window.location.href="patient-registration.html";
 				}else{
 					if(datas==0){
 						alert("Invalid username or password");
 					}else{
-						window.location.href="/appointment/appointment-details.html?id="+datas;
+						window.location.href="appointment-details.html?id="+datas;
 					}
 				}
 			},
