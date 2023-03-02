@@ -19,6 +19,23 @@ public class ApiDao {
 	@Autowired
 	SessionFactory sf;
 
+	
+public String login(String username, String password) {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "select * from admin where username='"+username+"' and password='"+password+"'";;
+		NativeQuery nq = session.createNativeQuery(sql);
+		if (nq.list().size() != 0) {
+			return "admin";
+		} else {
+			
+				return "Invalid";
+		
+			
+		}
+	}
+
+
 	public void add_vehicle(String name, String type, String number) {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();

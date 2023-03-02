@@ -31,7 +31,10 @@ public class ApiController {
 //	public Boolean login(@PathVariable String username,@PathVariable String password) {
 //		return service.login(username,password);
 //	}
-	
+	@GetMapping("/login/{username}/{password}")
+	public String login(@PathVariable String username,@PathVariable String password) {
+		return dao.login(username,password);
+	}
 	
 	@GetMapping("/add_vehicle/{name}/{type}/{number}")
 	public String add_vehicle(@PathVariable String name,
