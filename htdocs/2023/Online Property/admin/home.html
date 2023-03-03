@@ -1,0 +1,149 @@
+<html>
+
+<head>
+   <link href="css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
+   <link href="bootstrap/bootstrap.css" rel="stylesheet" />
+   <link href="/js/datatables.css" rel="stylesheet" />
+
+
+   <link rel="stylesheet" type="text/css" href="/home/home.css">
+</head>
+
+<body>
+   <div class="container">
+
+      <header>
+         <div id="navbar" class="container-fluid">
+            <div class="container nav-fill w-100">
+
+               <nav class="navbar navbar-expand-md navbar-light" role="navigation">
+                  <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarContent"
+                     aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarContent">
+                     <ul class="navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                           <a href="#htab0" role="button" class="btn btn-default" data-toggle="tab">Add Property</a>
+                        </li>
+
+                        <li class="nav-item">
+                           <a href="index.php" role="button" class="btn btn-default">Logout</a>
+                        </li>
+                     </ul>
+                  </div>
+               </nav>
+            </div>
+         </div>
+      </header>
+      <div class="container">
+         <div class="row">
+            <div class="col-sm-12">
+               <div class="tab-content" style="margin: 30px">
+                  <div role="tabpanel" class="tab-pane fade in active" id="htab0">
+                     <div class="col-sm-4">
+                        <div class="form-group">
+                           <label>Title:</label>
+                           <input id="1" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                           <label>Property Detail:</label>
+                           <input id="2" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                           <label>Delivery Type:</label>
+                           <Select id="3">
+                              <option>Sale</option>
+                              <option>Rent</option>
+                           </Select>
+                        </div>
+                        <div class="form-group">
+                           <label>Price:</label>
+                           <input id="4" type="text" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                           <label>Address:</label>
+                           <input id="5" type="text" class="form-control">
+                        </div>
+
+
+                        <div class="form-group">
+                           <label>Bed Room:</label>
+                           <input id="6" type="text" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                           <label>Living Room:</label>
+                           <input id="7" type="text" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                           <label>Parking:</label>
+                           <input id="8" type="text" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                           <label>Kitchen:</label>
+                           <input id="9" type="text" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                           <label>Property Type:</label>
+                           <select id="10">
+                              <option>Apartment</option>
+                              <option>Office-Space</option>
+                              <option>Building</option>
+                           </select>
+                        </div>
+
+                        <div class="form-group">
+                           <label>Floor Space:</label>
+                           <input id="11" type="text" class="form-control">
+                        </div>
+                        <button id="add" type="button" class="btn btn-danger">Add Customer</button>
+                     </div>
+
+                  </div>
+
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</body>
+<script src="bootstrap/jquery.min.js"></script>
+<script src="home/home.js"></script>
+<script src="bootstrap/datatable.min.js"></script>
+<script src="bootstrap/datatable.bootstrap.min.js"></script>
+<script src="bootstrap/bootstrap.min.js"></script>
+<script>
+   $(document).ready(function () {
+
+
+      $('#add').click(function () {
+         var title = $("#1").val();
+         var detail = $("#2").val();
+         var type = $("#3").val();
+         var price = $("#4").val();
+         var address = $("#5").val();
+         var bed = $("#6").val();
+         var live = $("#7").val();
+         var park = $("#8").val();
+         var kit = $("#9").val();
+         var ptype = $("#10").val();
+         var space = $("#11").val();
+
+         $.ajax({
+            type: 'POST',
+            url: 'home.php',
+            data: { title: title, detail: detail, type: type, price: price, address: address, bed: bed, live: live, park: park, kit: kit, ptype: ptype, space: space },
+            success: function (response) {
+               alert(response);
+            }
+         });
+      });
+   });
+</script>
+
+</html>
