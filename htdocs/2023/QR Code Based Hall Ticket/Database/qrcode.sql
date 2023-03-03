@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2023 at 06:37 PM
+-- Generation Time: Mar 03, 2023 at 07:08 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -18,61 +18,57 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `buspass`
+-- Database: `qrcode`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pass`
+-- Table structure for table `admin`
 --
 
-CREATE TABLE `pass` (
+CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
-  `author` text NOT NULL,
-  `from_place` text NOT NULL,
-  `to_place` text NOT NULL,
-  `amount` text NOT NULL
+  `username` text NOT NULL,
+  `password` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`) VALUES
+(1, 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hallticket`
+--
+
+CREATE TABLE `hallticket` (
+  `id` int(11) NOT NULL,
+  `rollno` text NOT NULL,
+  `subject` text NOT NULL,
+  `hallno` text NOT NULL,
+  `exdate` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `passenger`
+-- Table structure for table `student`
 --
 
-CREATE TABLE `passenger` (
+CREATE TABLE `student` (
   `id` int(11) NOT NULL,
-  `name` text NOT NULL,
-  `mobile` text NOT NULL,
-  `author` text NOT NULL,
-  `age` text NOT NULL,
-  `gender` text NOT NULL,
-  `address` text NOT NULL,
-  `pincode` text NOT NULL,
-  `image` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `renewal`
---
-
-CREATE TABLE `renewal` (
-  `id` int(11) NOT NULL,
-  `author` text NOT NULL,
-  `from_date` text NOT NULL,
-  `to_date` text NOT NULL,
-  `from_place` text NOT NULL,
-  `to_place` text NOT NULL,
-  `amount` text NOT NULL,
-  `mobile` text NOT NULL,
-  `gender` text NOT NULL,
-  `address` text NOT NULL,
-  `age` text NOT NULL,
-  `pincode` text NOT NULL,
-  `name` text NOT NULL
+  `fname` text NOT NULL,
+  `lname` text NOT NULL,
+  `rollno` text NOT NULL,
+  `department` text NOT NULL,
+  `classname` text NOT NULL,
+  `username` text NOT NULL,
+  `password` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -80,21 +76,21 @@ CREATE TABLE `renewal` (
 --
 
 --
--- Indexes for table `pass`
+-- Indexes for table `admin`
 --
-ALTER TABLE `pass`
+ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `passenger`
+-- Indexes for table `hallticket`
 --
-ALTER TABLE `passenger`
+ALTER TABLE `hallticket`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `renewal`
+-- Indexes for table `student`
 --
-ALTER TABLE `renewal`
+ALTER TABLE `student`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -102,21 +98,21 @@ ALTER TABLE `renewal`
 --
 
 --
--- AUTO_INCREMENT for table `pass`
+-- AUTO_INCREMENT for table `admin`
 --
-ALTER TABLE `pass`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `passenger`
+-- AUTO_INCREMENT for table `hallticket`
 --
-ALTER TABLE `passenger`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `hallticket`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `renewal`
+-- AUTO_INCREMENT for table `student`
 --
-ALTER TABLE `renewal`
+ALTER TABLE `student`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 

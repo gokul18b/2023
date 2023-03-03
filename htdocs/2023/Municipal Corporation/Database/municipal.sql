@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2023 at 06:37 PM
+-- Generation Time: Mar 03, 2023 at 06:53 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -18,61 +18,60 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `buspass`
+-- Database: `municipal`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pass`
+-- Table structure for table `admin`
 --
 
-CREATE TABLE `pass` (
+CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
-  `author` text NOT NULL,
-  `from_place` text NOT NULL,
-  `to_place` text NOT NULL,
-  `amount` text NOT NULL
+  `username` text NOT NULL,
+  `password` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`) VALUES
+(1, 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `citizen`
+--
+
+CREATE TABLE `citizen` (
+  `id` int(11) NOT NULL,
+  `fname` text NOT NULL,
+  `lname` text NOT NULL,
+  `mobile` text NOT NULL,
+  `address` text NOT NULL,
+  `city` text NOT NULL,
+  `state` text NOT NULL,
+  `pincode` text NOT NULL,
+  `username` text NOT NULL,
+  `password` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `passenger`
+-- Table structure for table `complaint`
 --
 
-CREATE TABLE `passenger` (
+CREATE TABLE `complaint` (
   `id` int(11) NOT NULL,
-  `name` text NOT NULL,
+  `citizen_id` int(11) NOT NULL,
   `mobile` text NOT NULL,
-  `author` text NOT NULL,
-  `age` text NOT NULL,
-  `gender` text NOT NULL,
   `address` text NOT NULL,
-  `pincode` text NOT NULL,
-  `image` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `renewal`
---
-
-CREATE TABLE `renewal` (
-  `id` int(11) NOT NULL,
-  `author` text NOT NULL,
-  `from_date` text NOT NULL,
-  `to_date` text NOT NULL,
-  `from_place` text NOT NULL,
-  `to_place` text NOT NULL,
-  `amount` text NOT NULL,
-  `mobile` text NOT NULL,
-  `gender` text NOT NULL,
-  `address` text NOT NULL,
-  `age` text NOT NULL,
-  `pincode` text NOT NULL,
-  `name` text NOT NULL
+  `reason` text NOT NULL,
+  `status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -80,21 +79,21 @@ CREATE TABLE `renewal` (
 --
 
 --
--- Indexes for table `pass`
+-- Indexes for table `admin`
 --
-ALTER TABLE `pass`
+ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `passenger`
+-- Indexes for table `citizen`
 --
-ALTER TABLE `passenger`
+ALTER TABLE `citizen`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `renewal`
+-- Indexes for table `complaint`
 --
-ALTER TABLE `renewal`
+ALTER TABLE `complaint`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -102,22 +101,22 @@ ALTER TABLE `renewal`
 --
 
 --
--- AUTO_INCREMENT for table `pass`
+-- AUTO_INCREMENT for table `admin`
 --
-ALTER TABLE `pass`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `passenger`
+-- AUTO_INCREMENT for table `citizen`
 --
-ALTER TABLE `passenger`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `citizen`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `renewal`
+-- AUTO_INCREMENT for table `complaint`
 --
-ALTER TABLE `renewal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `complaint`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
