@@ -84,7 +84,7 @@ public String login(String username, String password) {
 	public List<Object[]> get_goods() {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
-		String sql = "SELECT driver.name,vehicle.number,goods.id,goods.deliveryaddress,goods.days,goods.date from goods LEFT JOIN driver on(driver.id=goods.driverid) LEFT JOIN vehicle ON(vehicle.id-goods.vehicleid)";
+		String sql = "SELECT driver.name,vehicle.number,goods.id,goods.deliveryaddress,goods.days,goods.date from goods LEFT JOIN driver on(driver.id=goods.driverid) LEFT JOIN vehicle ON(vehicle.id=goods.vehicleid)";
 		NativeQuery nq = session.createNativeQuery(sql);
 		return nq.list();
 	}

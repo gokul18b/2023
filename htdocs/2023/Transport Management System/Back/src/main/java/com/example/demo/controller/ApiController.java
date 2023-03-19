@@ -44,7 +44,10 @@ public class ApiController {
 		dao.add_vehicle(name,type,number);
 		return "Vehicle Register Sucessfully";
 	}
-	
+	@GetMapping("/test")
+	public String hello() {
+		return "Hello";
+	}
 	@GetMapping("/add_driver/{name}/{mobile}/{address}/{license}/{aadhar}/{expierence}/{age}")
 	public String add_driver(
 	 @PathVariable String name,
