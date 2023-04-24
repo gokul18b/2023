@@ -18,7 +18,7 @@ import com.example.demo.service.ApiService;
 
 
 @RestController
-@RequestMapping(value = { "/api" })
+@RequestMapping(value = { "/sports/api" })
 public class ApiController {
 
 	@Autowired
